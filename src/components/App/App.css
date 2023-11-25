@@ -1,14 +1,11 @@
 .App {
   background-color: #fff;
-  margin: auto;
-  box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
-  min-height: 100vh;
 }
 
 .page {
@@ -18,4 +15,5 @@
   display: flex;
   flex-direction: column;
   font-family: 'DIN Pro', Arial, sans-serif;
+  box-sizing: border-box;
 }

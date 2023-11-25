@@ -5,11 +5,14 @@ import Main from '../Main/Main';
 
 function App() {
   return (
-    <div className='page'>
-      <header>Header</header>
-      <Main />
+    <>
+      <div className='page'>
+        <header>Header</header>
+        <Main />
+      </div>
       <Footer />
-    </div>
+    </>
+
   );
 }
 
