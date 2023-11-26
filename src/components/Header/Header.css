@@ -1,0 +1,9 @@
+.header {
+  width: 100%;
+  background-color: #f2f2f2;
+}
+
+.header__container {
+  margin: 0 auto;
+  max-width: 1250px;
+}

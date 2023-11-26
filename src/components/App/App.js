@@ -2,11 +2,12 @@ import './App.css';
 
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
+import Header from '../Header/Header';
 
 function App() {
   return (
     <div className='page'>
-      <header>Header</header>
+      <Header />
       <Main />
       <Footer />
     </div>
