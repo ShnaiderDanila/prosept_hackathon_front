@@ -12,55 +12,12 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.dealer__search-form {
-  margin-top: 20px;
-  display: flex;
-}
-
-.dealer__search-input {
-  min-height: 38px;
-  padding: 6px 36px;
-  flex: 1 0 auto;
-  background-color: #f2f2f2;
-  background-image: url('../../images/dealer-search-icon.svg');
-  background-repeat: no-repeat;
-  background-position: -30px 10px;
-  background-size: 100px;
-
-  border: 0px solid #d5dadc;
-  border-radius: 12px 0 0 12px;
-  box-sizing: border-box;
-  outline: none;
-  color: #555;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.dealer__search-button {
-  min-width: 110px;
-  padding: 3px 18px;
-  background: linear-gradient(90deg, rgba(56, 164, 58, 1) 0%, rgba(0, 183, 234, 1) 100%);
-  border: none;
-  border-radius: 0 12px 12px 0;
-  outline: none;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  line-height: 1.4;
-  box-sizing: border-box;
-}
-
-.dealer__search-button:hover {
-  background: rgba(56, 164, 58, 1);
-}
-
 .dealer__filter-menu {
   min-height: 40px;
   margin: 20px 0 0 0;
   padding: 0 40px;
   display: flex;
   list-style: none;
-  justify-content: space-between;
   align-items: center;
   background-color: #f2f2f2;
   border-radius: 12px;

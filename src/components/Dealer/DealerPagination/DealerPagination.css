@@ -1,4 +1,4 @@
-.product-pagination {
+.dealer-pagination {
   margin: 40px auto;
   padding: 0;
   list-style: none;
@@ -8,7 +8,7 @@
   max-width: 360px;
 }
 
-.product-pagination__button {
+.dealer-pagination__button {
   border: none;
   border-radius: 12px;
   background-color: transparent;
@@ -19,7 +19,7 @@
   color: #444;
 }
 
-.product-pagination__link {
+.dealer-pagination__link {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@
   transition: 0.3s ease;
 }
 
-.product-pagination__link:hover {
+.dealer-pagination__link:hover {
   background: rgb(56, 164, 58);
   color: #fff;
 }
