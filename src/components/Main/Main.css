@@ -1,16 +1,14 @@
 .main {
   margin: 20px auto;
   max-width: 1250px;
+  position: relative;
+
+}
+
+.all-products_container {
+  margin-top: 58px;
   display: grid;
   grid-template-columns: 2fr 3fr;
   word-wrap: break-word;
   box-sizing: border-box;
-}
-
-.product_container {
-  padding: 20px;
-  border: 3px solid #f2f2f2;
-  color: rgb(56, 164, 58);
-  font-size: 24px;
-  font-weight: 700;
 }
