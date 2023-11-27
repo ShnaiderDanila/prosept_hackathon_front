@@ -1,8 +1,15 @@
-.product-list {
+.dealer-product-list {
   margin: 20px 0 0 0;
   padding: 20px;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px 20px;
+}
+
+.dealer-product-list-error {
+  margin: 100px auto;
+  text-align: center;
+  line-height: 1.4;
+  color: #333;
 }
