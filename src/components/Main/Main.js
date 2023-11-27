@@ -2,18 +2,16 @@ import React from 'react';
 
 import './Main.css';
 
+import Dealer from '../Dealer/Dealer';
+
 export default function Main() {
   return (
     <main className='main'>
 
         <div className="product_container">
-          qwe
+          Товары производителя
         </div>
-        <div className="dealer-price_container">
-          dsa
-        </div>
-
-
+        <Dealer />
     </main>
   )
 }
