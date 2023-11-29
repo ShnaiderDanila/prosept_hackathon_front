@@ -1,7 +1,10 @@
 .main {
   margin: 20px auto;
-  max-width: 1250px;
+  width: 100%;
   position: relative;
+  padding: 0 50px;
+  box-sizing: border-box;
+  /* max-width: 1250px; */
 
 }
 

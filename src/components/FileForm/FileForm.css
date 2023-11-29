@@ -1,6 +1,6 @@
 .file-form {
   position: absolute;
-  right: 0;
+  right: 50px;
   display: flex;
   padding-left: auto;
 }
