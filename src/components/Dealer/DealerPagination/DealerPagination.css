@@ -1,4 +1,4 @@
-.dealer-pagination {
+/* .dealer-pagination {
   margin: 40px auto;
   padding: 0;
   list-style: none;
@@ -37,4 +37,32 @@
 .dealer-pagination__link:hover {
   background: rgb(56, 164, 58);
   color: #fff;
+} */
+
+
+.dealer-pagination {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.dealer-pagination__button {
+  border: none;
+  border-radius: 12px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 18px;
+  line-height: 28px;
+  color: #444;
+}
+
+.dealer-pagination__button:hover {
+  opacity: 0.7;
+}
+
+.dealer-pagination__input {
+  width: 50px;
 }

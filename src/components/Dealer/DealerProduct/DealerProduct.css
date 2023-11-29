@@ -1,9 +1,16 @@
 .dealer-product {
-  max-width: 220px;
+  width: 100%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.dealer-product__description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .dealer-product__link {
@@ -18,16 +25,23 @@
   object-position: center;
 }
 
+.dealer-product__container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
 .dealer-product__price {
   margin: 0;
   font-size: 18px;
   font-weight: 700;
   color: rgba(56, 164, 58, 1);
+  min-width: 100px;
+  text-align: center;
 }
 
 .dealer-product__name {
   display: inline-block;
-  margin: 10px 0 0 0;
   text-decoration: none;
   color: #3f3f3f;
   font-size: 14px;
@@ -42,7 +56,7 @@
 }
 
 .dealer-product__date {
-  margin: 20px 0 0 0;
+  margin: 0;
   color: #CCC;
   font-size: 14px;
 }
@@ -54,7 +68,6 @@
 }
 
 .dealer-product__button-container {
-  margin: 20px 0 0 0;
   padding: 2px;
   max-width: 114px;
   background: linear-gradient(90deg, rgba(56, 164, 58, 1) 0%, rgba(0, 183, 234, 1) 100%);
