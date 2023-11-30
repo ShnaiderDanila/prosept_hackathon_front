@@ -5,3 +5,12 @@
   font-size: 24px;
   font-weight: 700;
 }
+
+.product__title {
+  margin: 0 0 80px 0;
+  color: rgb(56, 164, 58);
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e5e5e5;
+}
