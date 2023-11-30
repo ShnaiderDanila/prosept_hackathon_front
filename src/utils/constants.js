@@ -155,4 +155,46 @@ const productArr = [
   },
 ]
 
-export { productArr };
+const products = [
+  {
+    id: 245,
+    article: '008-1',
+    name: 'Антисептик невымываемыйPROSEPT ULTRAконцентрат 1:10  / 1 л',
+    ozon_article: '189522705.0',
+    wb_article: '150033482.0',
+    ym_article: '008-1',
+    wb_article_td: ''
+  },
+  {
+    id: 55,
+    article: '294-075',
+    name: 'Средство усиленного действия для удаления ржавчины и минеральных отложенийBath Acid +  с ароматом цитрусаконцентрат 1:200-1:500 / 0,75 л',
+    ozon_article: '413264552.0',
+    wb_article: '149811030.0',
+    ym_article: '294-075',
+    wb_article_td: '294-0750'
+  },
+  {
+    id: 3,
+    article: '242-12',
+    name: 'Антигололед - 32 PROSEPTготовый состав / 12 кг',
+    ozon_article: '',
+    wb_article: '',
+    ym_article: '',
+    wb_article_td: ''
+  },
+  {
+    id: 443,
+    article: '0024-06 с',
+    name: 'Герметик акриловый цвет сосна, ф/п 600мл',
+    ozon_article: '189522735.0',
+    wb_article: '150126217.0',
+    ym_article: '0024-06-с',
+    wb_article_td: ''
+  },
+]
+
+module.exports = {
+  productArr,
+  products
+};
