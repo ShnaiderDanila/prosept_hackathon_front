@@ -57,7 +57,6 @@ function ProductForm(props) {
           ))}
         </tbody>
       </table>
-
       <div className="product_buttons-container">
         <div className='product__button-container'>
           <button className='product__button' type='submit'>Да</button>
