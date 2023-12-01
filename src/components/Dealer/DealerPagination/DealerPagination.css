@@ -45,11 +45,11 @@
 
 .dealer-pagination__dropdown-menu {
   list-style: none;
-  padding: 0.2em 0.5em;
+  padding: 5px;
   background: rgb(56, 164, 58);
   color: #fff;
   position: absolute;
-  top: -170px;
+  top: -180px;
   left: 0;
   width: 100%;
   opacity: 0;
@@ -67,7 +67,8 @@
 }
 
 .dealer-pagination__dropdown-item:hover {
-  background-color: rgb(47, 130, 48);
+  background-color: #f2f2f2;
+  color: #333;
 }
 
 .dealer-pagination__dropdown-menu_open {
