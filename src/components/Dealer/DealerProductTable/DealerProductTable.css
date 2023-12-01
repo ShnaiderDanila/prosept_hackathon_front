@@ -1,6 +1,7 @@
 .dealer-table {
   border-collapse: collapse;
   width: 100%;
+  color: #333;
 }
 
 .dealer-table__cell, .dealer-table__header-cell {
@@ -13,14 +14,37 @@ table tr:hover {
 }
 
 .dealer-table__header-cell {
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding: 12px;
   text-align: center;
   background-color: rgb(56, 164, 58);
   color: white;
+  text-align: center;
+}
+
+.dealer-table__sort-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.dealer-table__sort-title {
+  margin: 0;
 }
 
 .dealer-table__sort-title:hover {
   opacity: 0.7;
 }
 
+.dealer-table__sorted-icon {
+  margin: 0 0 0 10px;
+}
+
+.dealer-table__product-link {
+  text-decoration: none;
+  color: #333;
+}
+
+.dealer-table__product-link:hover {
+  color: rgb(56, 164, 58);
+}
