@@ -4,11 +4,13 @@ import './Dealer.css';
 
 import DealerProductTable from './DealerProductTable/DealerProductTable';
 
-function Dealer() {
+function Dealer(props) {
   return (
     <section className='dealer'>
       <h2 className='dealer__title'>Товары дилеров</h2>
-      <DealerProductTable />
+      <DealerProductTable
+        pendingDealersProducts={props.pendingDealersProducts}
+      />
     </section>
   )
 };

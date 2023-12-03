@@ -11,8 +11,11 @@ export default function Main(props) {
       <Manufacturer
         onComparePosition={props.onComparePosition}
         onNotComparePosition={props.onNotComparePosition}
-        onPostonePosition={props.onPostonePosition} />
-      <Dealer />
+        onPostonePosition={props.onPostonePosition}
+      />
+      <Dealer
+        pendingDealersProducts={props.pendingDealersProducts}
+      />
     </main>
   )
 }

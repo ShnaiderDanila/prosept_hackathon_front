@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -12,6 +12,9 @@ import StatisticsDealer from '../StatisticsDealer/StatisticsDealer';
 import { mainApi } from '../../utils/MainApi';
 
 function App() {
+  // console.log(mainApi.getPendingDealersProducts);
+
+  const [pendingDealersProducts, setPendingDealersProducts] = useState([]);
 
   function handleComparePosition(product) {
     mainApi.comparePosition();
@@ -28,6 +31,15 @@ function App() {
     console.log(product);
   }
 
+  useEffect(() => {
+    mainApi.getPendingDealersProducts()
+    .then((pendingDealersProducts) => {
+      setPendingDealersProducts(pendingDealersProducts);
+      // console.log(pendingDealersProducts);
+    })
+    .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className='page'>
       <Header />
@@ -36,6 +48,7 @@ function App() {
           onComparePosition={handleComparePosition}
           onNotComparePosition={handleNotComparePosition}
           onPostonePosition={handlePostponePosition}
+          pendingDealersProducts={pendingDealersProducts}
         />} />
         <Route path="/statistics/dealers" element={<StatisticsDealer
         />} />
