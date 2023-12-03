@@ -160,6 +160,8 @@ const products = [
     id: 245,
     article: '008-1',
     name: 'Антисептик невымываемыйPROSEPT ULTRAконцентрат 1:10  / 1 л',
+    cost: 360.00,
+    recomended_price: 858.00,
     ozon_article: '189522705.0',
     wb_article: '150033482.0',
     ym_article: '008-1',
@@ -169,6 +171,8 @@ const products = [
     id: 55,
     article: '294-075',
     name: 'Средство усиленного действия для удаления ржавчины и минеральных отложенийBath Acid +  с ароматом цитрусаконцентрат 1:200-1:500 / 0,75 л',
+    cost: 75.00,
+    recomended_price: 176.00,
     ozon_article: '413264552.0',
     wb_article: '149811030.0',
     ym_article: '294-075',
@@ -178,6 +182,8 @@ const products = [
     id: 3,
     article: '242-12',
     name: 'Антигололед - 32 PROSEPTготовый состав / 12 кг',
+    cost: 460.16,
+    recomended_price: 1075.00,
     ozon_article: '',
     wb_article: '',
     ym_article: '',
@@ -187,11 +193,25 @@ const products = [
     id: 443,
     article: '0024-06 с',
     name: 'Герметик акриловый цвет сосна, ф/п 600мл',
+    cost: 307.0,
+    recomended_price: 644.00,
     ozon_article: '189522735.0',
     wb_article: '150126217.0',
     ym_article: '0024-06-с',
     wb_article_td: ''
   },
+  {
+    id: 453,
+    article: 'w263-05',
+    name: 'Спрей для очистки каминных стекол от сажи и копоти Universal Hard 0,5 л',
+    cost: 94.0,
+    recomended_price: 220.0,
+    ozon_article: '',
+    wb_article: '154961488.0',
+    ym_article: '',
+    wb_article_td: ''
+  },
+
 ]
 
 module.exports = {

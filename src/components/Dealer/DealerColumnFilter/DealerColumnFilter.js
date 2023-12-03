@@ -11,7 +11,6 @@ function DealerColumnFilter({ column }) {
       <input
         className='dealer-column-filter__input'
         type='text'
-        placeholder='Поиск'
         autoComplete="off"
         value={filterValue || ''}
         onChange={(e) => setFilter(e.target.value)} />

@@ -9,7 +9,7 @@ function DealerRadioButton({ rowId }) {
   }
 
   return (
-      <input type='radio' name="name" onChange={handleChange}/>
+      <input className='dealer-radio-button' type='radio' name="name" onChange={handleChange}/>
   )
 };
 

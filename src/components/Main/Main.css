@@ -1,17 +1,9 @@
 .main {
-  margin: 20px auto;
   width: 100%;
-  position: relative;
+  margin: 50px auto;
   padding: 0 50px;
   box-sizing: border-box;
-  /* max-width: 1250px; */
-
-}
-
-.all-products_container {
-  margin-top: 58px;
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 1fr 1fr;
   word-wrap: break-word;
-  box-sizing: border-box;
 }

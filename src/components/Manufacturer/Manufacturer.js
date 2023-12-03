@@ -1,19 +1,18 @@
 import React from 'react';
 
-import ProductForm from './ProductForm/ProductForm';
+import ManufacturerProductForm from './ManufacturerProductForm/ManufacturerProductForm';
 
 import './Manufacturer.css';
 
 function Manufacturer(props) {
 
   return (
-    <section className='manufacturer_product'>
-      <h2 className='product__title'>Товары производителя</h2>
-      <ProductForm
+    <section className='manufacturer'>
+      <h2 className='manufacturer__title'>Товары производителя</h2>
+      <ManufacturerProductForm
         onComparePosition={props.onComparePosition}
         onNotComparePosition={props.onNotComparePosition}
-        onPostonePosition={props.onPostonePosition}
-      />
+        onPostonePosition={props.onPostonePosition}/>
     </section>
   )
 };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAsyncDebounce } from 'react-table';
 
 import './DealerGlobalFilter.css';
@@ -8,7 +8,16 @@ function DealerGlobalFilter({ filterValue, setFilterValue }) {
 
   const onChange = useAsyncDebounce(value => {
     setFilterValue(value || undefined)
+    localStorage.setItem('globalFilter', value);
   }, 300)
+
+  useEffect(() => {
+    const localValue = localStorage.getItem('globalFilter')
+    if (localValue) {
+      setValue(localValue);
+      setFilterValue(localValue);
+    }
+  }, [setFilterValue])
 
   return (
     <form className='dealer-global-filter' >
