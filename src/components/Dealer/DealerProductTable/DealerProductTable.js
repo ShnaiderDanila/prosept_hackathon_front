@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from 'react-table';
 
 import './DealerProductTable.css';
@@ -8,7 +8,7 @@ import DealerColumnFilter from '../DealerColumnFilter/DealerColumnFilter';
 import DealerPagination from '../DealerPagination/DealerPagination';
 import DealerRadioButton from '../DealerRadioButton/DealerRadioButton';
 
-import { productArr } from '../../../utils/constants';
+// import { productArr } from '../../../utils/constants';
 
 const COLUMNS = [
   {
@@ -51,9 +51,10 @@ const COLUMNS = [
 ]
 
 function DealerProductTable(props) {
+
   console.log(props.pendingDealersProducts);
-  const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => props.pendingDealersProducts, []);
+  // const columns = useMemo(() => COLUMNS, []);
+  // const data = useMemo(() => props.pendingDealersProducts, []);
   const defaultColumn = useMemo(() => {
     return {
       Filter: DealerColumnFilter
@@ -61,8 +62,8 @@ function DealerProductTable(props) {
   }, []);
 
   const tableInstance = useTable({
-    columns: columns,
-    data: data,
+    columns: COLUMNS,
+    data: props.pendingDealersProducts,
     defaultColumn: defaultColumn,
   }, useFilters, useGlobalFilter, useSortBy, usePagination);
 
