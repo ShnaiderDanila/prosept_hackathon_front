@@ -1,12 +1,14 @@
 .dealer-table {
-  border-collapse: collapse;
   width: 100%;
+  border-collapse: collapse;
   color: #333;
+  font-size: 14px;
 }
 
 .dealer-table__cell, .dealer-table__header-cell {
   border: 1px solid #f2f2f2;
   padding: 8px;
+  max-width: 300px;
 }
 
 table tr:hover {
@@ -17,15 +19,22 @@ table tr:hover {
   padding: 12px;
   text-align: center;
   background-color: rgb(56, 164, 58);
-  color: white;
-  text-align: center;
+  color: #fff;
+  user-select: none;
+}
+
+.dealer-table__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 75px;
+  gap: 10px;
 }
 
 .dealer-table__sort-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
 .dealer-table__sort-title {
@@ -37,7 +46,7 @@ table tr:hover {
 }
 
 .dealer-table__sorted-icon {
-  margin: 0 0 0 10px;
+  margin: 0 0 0 5px;
 }
 
 .dealer-table__product-link {

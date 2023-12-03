@@ -15,7 +15,7 @@ const COLUMNS = [
     Header: 'Выберите товар',
     disableFilters: true,
     Cell: ({ row }) => (
-      <DealerRadioButton rowId={row.values.id}/>
+      <DealerRadioButton rowId={row.values.id} />
     ),
     disableSortBy: true,
   },
@@ -95,14 +95,16 @@ function DealerProductTable() {
             <tr className='dealer-table__row' {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th className='dealer-table__header-cell' {...column.getHeaderProps()}>
-                  <div {...column.getSortByToggleProps()} className='dealer-table__sort-header'>
-                    <p className='dealer-table__sort-title'>{column.render('Header')}</p>
-                    <p className='dealer-table__sorted-icon'>
-                      {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
-                    </p>
-                  </div>
-                  <div>
-                    {column.canFilter ? column.render('Filter') : null}
+                  <div className='dealer-table__container'>
+                    <div {...column.getSortByToggleProps()} className='dealer-table__sort-header'>
+                      <p className='dealer-table__sort-title'>{column.render('Header')}</p>
+                      <p className='dealer-table__sorted-icon'>
+                        {column.isSorted ? (column.isSortedDesc ? '▼' : '▲') : ''}
+                      </p>
+                    </div>
+                    <div>
+                      {column.canFilter ? column.render('Filter') : null}
+                    </div>
                   </div>
                 </th>
               ))}
