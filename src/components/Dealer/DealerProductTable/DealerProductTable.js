@@ -50,10 +50,10 @@ const COLUMNS = [
   },
 ]
 
-function DealerProductTable() {
-
+function DealerProductTable(props) {
+  console.log(props.pendingDealersProducts);
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => productArr, []);
+  const data = useMemo(() => props.pendingDealersProducts, []);
   const defaultColumn = useMemo(() => {
     return {
       Filter: DealerColumnFilter

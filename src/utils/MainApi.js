@@ -1,6 +1,6 @@
 class MainApi {
   constructor(){
-    this._url = 'in_future';
+    this._url = 'http://prosept.sytes.net';
     this._headers = {
       'Content-Type': 'application/json'
     }
@@ -13,6 +13,15 @@ class MainApi {
 
     return Promise.reject(`Ошибка: ${res.status}`);
   };
+
+  getPendingDealersProducts(product) {
+    console.log('compare');
+    return fetch(`${this._url}/api/dealerprice/`, {
+      headers: this._headers,
+    })
+      .then(res => this._checkResponse(res))
+  };
+
 
   comparePosition(product) {
     console.log('compare');
