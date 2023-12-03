@@ -33,11 +33,11 @@ function App() {
 
   useEffect(() => {
     mainApi.getPendingDealersProducts()
-    .then((pendingDealersProducts) => {
-      setPendingDealersProducts(pendingDealersProducts);
-      // console.log(pendingDealersProducts);
-    })
-    .catch((err) => console.log(err));
+      .then((pendingDealersProducts) => {
+        setPendingDealersProducts(pendingDealersProducts);
+        // console.log(pendingDealersProducts);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   return (
