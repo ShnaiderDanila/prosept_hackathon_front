@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 import './DropdownMenu.css';
 
 function DropdownMenu() {
+
+  const dropdownMenuRef = useRef(null);
 
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
 
@@ -11,9 +14,15 @@ function DropdownMenu() {
     setDropdownMenuIsOpen(!dropdownMenuIsOpen)
   }
 
+  function handleCloseSelectMenu() {
+    setDropdownMenuIsOpen(false)
+  }
+
+  useOutsideClick(dropdownMenuRef, handleCloseSelectMenu, dropdownMenuIsOpen);
+
   return (
     <div className='dropdown-menu'>
-      <div className='dropdown-menu__container' onClick={handleOpenSelectMenu}>
+      <div ref={dropdownMenuRef} className='dropdown-menu__container' onClick={handleOpenSelectMenu}>
         <span className='dropdown-menu__text'>Меню</span>
         <div className={`dropdown-menu__icon ${dropdownMenuIsOpen ? 'dropdown-menu__close-icon' : 'dropdown-menu__open-icon'}`}></div>
       </div>
