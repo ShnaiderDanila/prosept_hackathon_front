@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import './DealerPagination.css';
 
@@ -16,6 +17,7 @@ function DealerPagination({
 
   const [value, setValue] = useState(pageIndex + 1)
   const [selectMenuIsOpen, setSelectMenuIsOpen] = useState(false);
+  const dropdownMenuRef = useRef(null);
 
   function handleClickDecrement() {
     if (pageIndex > 0) {
@@ -37,8 +39,12 @@ function DealerPagination({
     gotoPage(pageNumber)
   }
 
-  function handleOpenSelectMenu(e) {
+  function handleToggleSelectMenu(e) {
     setSelectMenuIsOpen(!selectMenuIsOpen)
+  }
+
+  function handleCloseSelectMenu(e) {
+    setSelectMenuIsOpen(false)
   }
 
   function handleSelectOption(e) {
@@ -48,10 +54,12 @@ function DealerPagination({
     }
   }
 
+  useOutsideClick(dropdownMenuRef, handleCloseSelectMenu, selectMenuIsOpen)
+
   return (
     <div className='dealer-pagination'>
       <div className='deler-pagination__dropdown'>
-        <div className='deler-pagination__select' onClick={handleOpenSelectMenu}>
+        <div ref={dropdownMenuRef} className='deler-pagination__select' onClick={handleToggleSelectMenu}>
           <span className='deler-pagination__selected'>{pageSize} позиций</span>
           <div className={`deler-pagination__caret`}></div>
         </div>
