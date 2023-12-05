@@ -2,10 +2,11 @@ import React from 'react';
 
 import './ManufacturerRadioButton.css';
 
-function ManufacturerRadioButton({ rowId }) {
+function ManufacturerRadioButton(props) {
 
   function handleChange () {
-    console.log(rowId)
+
+    props.getRadioValue(props.rowId)
   }
 
   return (

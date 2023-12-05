@@ -14,14 +14,25 @@ const COLUMNS = [
   {
     Header: 'Выберите товар',
     disableFilters: true,
-    Cell: ({ row }) => (
-      <DealerRadioButton rowId={row.values.id} />
-    ),
+    Cell: (props) => {
+      // console.log(props.row.values.product_key);
+      return (
+      <DealerRadioButton
+      rowId={props.row.values.product_key}
+      getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
+      />
+    )},
     disableSortBy: true,
   },
   {
     Header: 'ID',
     accessor: 'id',
+    enableHiding: false,
+    disableFilters: true,
+  },
+  {
+    Header: 'product_key',
+    accessor: 'product_key',
     enableHiding: false,
     disableFilters: true,
   },
@@ -41,10 +52,6 @@ const COLUMNS = [
     accessor: 'price',
   },
   {
-    Header: 'Продавец',
-    accessor: 'dealer_id',
-  },
-  {
     Header: "Дата записи",
     accessor: 'date',
   },
@@ -52,7 +59,7 @@ const COLUMNS = [
 
 function DealerProductTable(props) {
 
-  console.log(props.pendingDealersProducts);
+  // console.log(props);
   // const columns = useMemo(() => COLUMNS, []);
   // const data = useMemo(() => props.pendingDealersProducts, []);
   const defaultColumn = useMemo(() => {
@@ -119,7 +126,7 @@ function DealerProductTable(props) {
               <tr {...row.getRowProps()}>
                 {
                   row.cells.map((cell) => {
-                    return <td className='dealer-table__cell' {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    return <td className='dealer-table__cell' {...cell.getCellProps()}>{cell.render('Cell', {getRecomendationToDealerProduct:props.getRecomendationToDealerProduct})}</td>
                   })
                 }
               </tr>
