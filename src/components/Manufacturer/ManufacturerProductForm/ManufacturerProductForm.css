@@ -5,10 +5,15 @@
   font-size: 14px;
 }
 
-.manufacturer-table__cell, .manufacturer-table__header-cell {
+.manufacturer-table__cell,
+.manufacturer-table__header-cell {
   border: 1px solid #f2f2f2;
   padding: 8px;
   max-width: 300px;
+}
+
+.manufacturer-table__cell {
+  line-height: 20px;
 }
 
 table tr:hover {
@@ -63,18 +68,11 @@ table tr:hover {
   gap: 10px;
 }
 
-.manufacturer-button-container {
-  padding: 2px;
-  min-width: 77px;
-  background: linear-gradient(90deg, rgba(56, 164, 58, 1) 0%, rgba(0, 183, 234, 1) 100%);
-  border-radius: 25px;
-}
-
 .manufacturer-button {
-  width: 100%;
+  min-width: 140px;
   padding: 10px;
   outline: none;
-  border: none;
+  border: 2px solid rgb(56, 164, 58);
   border-radius: 25px;
   background-color: #fff;
   text-align: center;
@@ -84,8 +82,6 @@ table tr:hover {
 }
 
 .manufacturer-button:hover {
-  background: linear-gradient(90deg, rgba(56, 164, 58, 1) 0%, rgba(0, 183, 234, 1) 100%);
+  background: rgb(56, 164, 58);
   color: #fff;
-  text-decoration: underline;
-  text-decoration-style: dotted;
 }

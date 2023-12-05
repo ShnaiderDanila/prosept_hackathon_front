@@ -126,15 +126,9 @@ function ManufacturerProductForm(props) {
       {props.recommendation.length > 1 &&
         (
           <div className="manufacturer-buttons">
-            <div className='manufacturer-button-container'>
-              <button className='manufacturer-button' type='submit'>Да</button>
-            </div>
-            <div className='manufacturer-button-container'>
-              <button className='manufacturer-button' type='button' onClick={handleNotComparePosition}>Нет</button>
-            </div>
-            <div className='manufacturer-button-container'>
-              <button className='manufacturer-button' type='button' onClick={handlePostponePosition}>Отложить</button>
-            </div>
+            <button className='manufacturer-button' type='submit'>Да</button>
+            <button className='manufacturer-button' type='button' onClick={handleNotComparePosition}>Нет</button>
+            <button className='manufacturer-button' type='button' onClick={handlePostponePosition}>Отложить</button>
           </div>
         )
       }
