@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
 import NotFound from '../NotFound/NotFound';
-import StatisticsDealer from '../StatisticsDealer/StatisticsDealer';
+import GeneralAnalytics from '../GeneralAnalytics/GeneralAnalytics';
 
 import { mainApi } from '../../utils/MainApi';
 
@@ -74,8 +74,7 @@ function App() {
           recommendation={recommendation}
           getRecomendationToDealerProduct={getRecomendationToDealerProduct}
         />} />
-        <Route path="/statistics/dealers" element={<StatisticsDealer
-        />} />
+        <Route path="/statistics/dealers" element={<GeneralAnalytics/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
