@@ -12,8 +12,6 @@ import GeneralAnalytics from '../GeneralAnalytics/GeneralAnalytics';
 import { mainApi } from '../../utils/MainApi';
 
 function App() {
-  // console.log(mainApi.getPendingDealersProducts);
-
   const [pendingDealersProducts, setPendingDealersProducts] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
   const [productKey, setProductKey] = useState('');
@@ -25,22 +23,23 @@ function App() {
       console.log(updateStatus);
     })
     .catch((err) => console.log(err));
-    // console.log(typeof(productKey));
-    // console.log(typeof(productId));
 
   }
 
-  function handleNotComparePosition(product) {
-    mainApi.notComparePosition();
-    console.log(product);
-    console.log(productKey);
-
+  function handleNotComparePosition() {
+    mainApi.updatePosition(productKey, "Нет")
+    .then((notCompareStatus) => {
+      console.log(notCompareStatus);
+    })
+    .catch((err) => console.log(err));
   }
 
-  function handlePostponePosition(product) {
-    mainApi.postponePosition();
-    console.log(product);
-    console.log(productKey);
+  function handlePostponePosition() {
+    mainApi.updatePosition(productKey, "Отложить")
+    .then((postponeStatus) => {
+      console.log(postponeStatus);
+    })
+    .catch((err) => console.log(err));
   }
 
   function getRecomendationToDealerProduct(value) {
