@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import './GeneralAnalyticsPagination.css';
 
@@ -13,6 +14,8 @@ function GeneralAnalyticsPagination({
   canPreviousPage,
   canNextPage,
   pageCount }) {
+
+  const dropdownMenuRef = useRef(null);
 
   const [value, setValue] = useState(pageIndex + 1)
   const [selectMenuIsOpen, setSelectMenuIsOpen] = useState(false);
@@ -37,8 +40,12 @@ function GeneralAnalyticsPagination({
     gotoPage(pageNumber)
   }
 
-  function handleOpenSelectMenu(e) {
+  function handleToggleSelectMenu(e) {
     setSelectMenuIsOpen(!selectMenuIsOpen)
+  }
+
+  function handleCloseSelectMenu(e) {
+    setSelectMenuIsOpen(false)
   }
 
   function handleSelectOption(e) {
@@ -48,10 +55,12 @@ function GeneralAnalyticsPagination({
     }
   }
 
+  useOutsideClick(dropdownMenuRef, handleCloseSelectMenu, selectMenuIsOpen)
+
   return (
     <div className='general-analytics-pagination'>
       <div className='general-analytics-pagination__dropdown'>
-        <div className='general-analytics-pagination__select' onClick={handleOpenSelectMenu}>
+        <div ref={dropdownMenuRef} className='general-analytics-pagination__select' onClick={handleToggleSelectMenu}>
           <span className='general-analytics-pagination__selected'>{pageSize} позиций</span>
           <div className={`general-analytics-pagination__caret`}></div>
         </div>
