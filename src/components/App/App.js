@@ -15,27 +15,49 @@ function App() {
   // console.log(mainApi.getPendingDealersProducts);
 
   const [pendingDealersProducts, setPendingDealersProducts] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
+  const [productKey, setProductKey] = useState('');
 
-  function handleComparePosition(product) {
-    mainApi.comparePosition();
-    console.log(product);
+  function handleComparePosition(productId) {
+    Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, "Да")])
+    .then(([compareStatus, updateStatus]) => {
+      console.log(compareStatus);
+      console.log(updateStatus);
+    })
+    .catch((err) => console.log(err));
+    // console.log(typeof(productKey));
+    // console.log(typeof(productId));
+
   }
 
   function handleNotComparePosition(product) {
     mainApi.notComparePosition();
     console.log(product);
+    console.log(productKey);
+
   }
 
   function handlePostponePosition(product) {
     mainApi.postponePosition();
     console.log(product);
+    console.log(productKey);
+  }
+
+  function getRecomendationToDealerProduct(value) {
+    setProductKey(value)
+    mainApi.getRecomendation(value)
+    .then((recommendation) => {
+      setRecommendation(recommendation);
+      console.log(recommendation);
+    })
+    .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     mainApi.getPendingDealersProducts()
       .then((pendingDealersProducts) => {
         setPendingDealersProducts(pendingDealersProducts);
-        // console.log(pendingDealersProducts);
+        console.log(pendingDealersProducts);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -49,6 +71,8 @@ function App() {
           onNotComparePosition={handleNotComparePosition}
           onPostonePosition={handlePostponePosition}
           pendingDealersProducts={pendingDealersProducts}
+          recommendation={recommendation}
+          getRecomendationToDealerProduct={getRecomendationToDealerProduct}
         />} />
         <Route path="/statistics/dealers" element={<StatisticsDealer
         />} />

@@ -10,6 +10,7 @@ function Dealer(props) {
       <h2 className='dealer__title'>Товары дилеров</h2>
       <DealerProductTable
         pendingDealersProducts={props.pendingDealersProducts}
+        getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
       />
     </section>
   )

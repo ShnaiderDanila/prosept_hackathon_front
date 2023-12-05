@@ -12,7 +12,10 @@ function Manufacturer(props) {
       <ManufacturerProductForm
         onComparePosition={props.onComparePosition}
         onNotComparePosition={props.onNotComparePosition}
-        onPostonePosition={props.onPostonePosition}/>
+        onPostonePosition={props.onPostonePosition}
+        recommendation={props.recommendation}
+        />
+
     </section>
   )
 };

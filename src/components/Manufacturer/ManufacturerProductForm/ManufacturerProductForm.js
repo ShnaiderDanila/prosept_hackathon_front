@@ -5,14 +5,19 @@ import './ManufacturerProductForm.css';
 
 import ManufacturerRadioButton from '../ManufacturerRadioButton/ManufacturerRadioButton';
 
-import { products } from '../../../utils/constants';
+// import { products } from '../../../utils/constants';
 
 const COLUMNS = [
   {
     Header: 'Выберите товар',
-    Cell: ({ row }) => (
-      <ManufacturerRadioButton />
-    ),
+    Cell: (props) => {
+      return (
+        <ManufacturerRadioButton
+          rowId={props.row.original.id}
+          getRadioValue={props.getRadioValue}
+        />
+      )
+    },
     disableSortBy: true,
   },
   {
@@ -42,15 +47,14 @@ const COLUMNS = [
 ]
 
 function ManufacturerProductForm(props) {
-
   const [value, setValue] = useState(null);
 
   const columns = useMemo(() => COLUMNS, []);
-  const data = useMemo(() => products, []);
+  // const data = useMemo(() => products, []);
 
   const tableInstance = useTable({
     columns: columns,
-    data: data,
+    data: props.recommendation,
   }, useSortBy, usePagination);
 
   const {
@@ -61,18 +65,24 @@ function ManufacturerProductForm(props) {
     prepareRow,
   } = tableInstance;
 
+  function getRadioValue(value) {
+    setValue(value)
+  }
+
   function handleSubmit(event) {
+    getRadioValue()
     event.preventDefault()
-    props.onComparePosition({ value })
+    props.onComparePosition(value)
   }
 
   function handleNotComparePosition() {
-    props.onNotComparePosition({ value })
+    props.onNotComparePosition(value)
   }
 
   function handlePostponePosition() {
-    props.onPostonePosition({ value })
+    props.onPostonePosition(value)
   }
+  // console.log(props.recommendation.length);
 
   return (
     <form className='manufacturer-product-form' onSubmit={handleSubmit}>
@@ -105,7 +115,7 @@ function ManufacturerProductForm(props) {
               <tr {...row.getRowProps()}>
                 {
                   row.cells.map((cell) => {
-                    return <td className='manufacturer-table__cell' {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                    return <td className='manufacturer-table__cell' {...cell.getCellProps()}>{cell.render('Cell', { getRadioValue: getRadioValue })}</td>
                   })
                 }
               </tr>
@@ -113,17 +123,22 @@ function ManufacturerProductForm(props) {
           })}
         </tbody>
       </table>
-      <div className="manufacturer-buttons">
-        <div className='manufacturer-button-container'>
-          <button className='manufacturer-button' type='submit'>Да</button>
-        </div>
-        <div className='manufacturer-button-container'>
-          <button className='manufacturer-button' type='button' onClick={handleNotComparePosition}>Нет</button>
-        </div>
-        <div className='manufacturer-button-container'>
-          <button className='manufacturer-button' type='button' onClick={handlePostponePosition}>Отложить</button>
-        </div>
-      </div>
+      {props.recommendation.length > 1 &&
+        (
+          <div className="manufacturer-buttons">
+            <div className='manufacturer-button-container'>
+              <button className='manufacturer-button' type='submit'>Да</button>
+            </div>
+            <div className='manufacturer-button-container'>
+              <button className='manufacturer-button' type='button' onClick={handleNotComparePosition}>Нет</button>
+            </div>
+            <div className='manufacturer-button-container'>
+              <button className='manufacturer-button' type='button' onClick={handlePostponePosition}>Отложить</button>
+            </div>
+          </div>
+        )
+      }
+
     </form>
   )
 };

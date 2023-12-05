@@ -2,10 +2,10 @@ import React from 'react';
 
 import './DealerRadioButton.css';
 
-function DealerRadioButton({ rowId }) {
+function DealerRadioButton(props) {
 
   function handleChange () {
-    console.log(rowId)
+    props.getRecomendationToDealerProduct(props.rowId)
   }
 
   return (
