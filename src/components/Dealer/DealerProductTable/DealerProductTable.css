@@ -11,6 +11,10 @@
   max-width: 300px;
 }
 
+.dealer-table__cell {
+  line-height: 20px;
+}
+
 table tr:hover {
   background-color: #f2f2f2;
 }

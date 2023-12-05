@@ -101,7 +101,7 @@
 }
 
 .dealer-pagination__page-number {
-  min-width: 50px;
+  min-width: 60px;
   margin: 0 10px;
   padding: 10px 18px;
   background: rgb(56, 164, 58);
