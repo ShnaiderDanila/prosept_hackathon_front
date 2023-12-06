@@ -5,8 +5,6 @@ import './ManufacturerProductForm.css';
 
 import ManufacturerRadioButton from '../ManufacturerRadioButton/ManufacturerRadioButton';
 
-// import { products } from '../../../utils/constants';
-
 const COLUMNS = [
   {
     Header: 'Выберите товар',
@@ -25,32 +23,20 @@ const COLUMNS = [
     accessor: 'article',
   },
   {
-    Header: 'Название товара',
+    Header: 'Наименование товара',
     accessor: 'name',
   },
   {
-    Header: 'Цена (руб.)',
+    Header: 'Цена',
     accessor: 'cost',
-  },
-  {
-    Header: 'Артикул Ozon',
-    accessor: 'ozon_article',
-  },
-  {
-    Header: "Артикул WB",
-    accessor: 'wb_article',
-  },
-  {
-    Header: "Артикул YM",
-    accessor: 'ym_article',
   },
 ]
 
 function ManufacturerProductForm(props) {
+
   const [value, setValue] = useState(null);
 
   const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => products, []);
 
   const tableInstance = useTable({
     columns: columns,
@@ -82,7 +68,6 @@ function ManufacturerProductForm(props) {
   function handlePostponePosition() {
     props.onPostonePosition(value)
   }
-  // console.log(props.recommendation.length);
 
   return (
     <form className='manufacturer-product-form' onSubmit={handleSubmit}>
