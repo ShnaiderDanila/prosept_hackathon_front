@@ -1,32 +1,15 @@
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import './GeneralAnalyticsDropdownMenu.css';
 
-function GeneralAnalyticsDropdownMenu({ column, setSelectedDealer }) {
+function GeneralAnalyticsDropdownMenu({ column, dealers, setSelectedDealer }) {
 
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
-
-  const [dealers, setDealers] = useState([]);
 
   const dropdownMenuRef = useRef(null);
 
   const { filterValue, setFilter } = column;
-
-  // Перенести выше в функцию при запросе к API
-  useEffect(() => {
-    fetch(`http://prosept.sytes.net/api/dealer/`, {
-      headers: { 'Content-Type': 'application/json' }
-    }).then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-      .then((arr) => {
-        const newArr = arr.sort((a, b) => a.name.localeCompare(b.name));
-        setDealers(newArr);
-      })
-  }, [])
 
   function handleOpenDropdownMenu(e) {
     setDropdownMenuIsOpen(!dropdownMenuIsOpen)
@@ -35,7 +18,6 @@ function GeneralAnalyticsDropdownMenu({ column, setSelectedDealer }) {
   function handleCloseDropdownMenu(e) {
     setDropdownMenuIsOpen(false)
   }
-
 
   function handleSelectOption(e) {
     if (e.target.classList.contains('general-analytics-dropdown-menu__item')) {

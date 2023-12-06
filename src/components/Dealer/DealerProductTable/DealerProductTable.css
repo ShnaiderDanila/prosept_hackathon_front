@@ -8,7 +8,7 @@
 .dealer-table__cell, .dealer-table__header-cell {
   border: 1px solid #f2f2f2;
   padding: 8px;
-  max-width: 300px;
+  max-width: 150px;
 }
 
 .dealer-table__cell {

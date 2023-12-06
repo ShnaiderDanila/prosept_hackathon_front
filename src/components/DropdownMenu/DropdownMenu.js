@@ -29,17 +29,12 @@ function DropdownMenu() {
       <ul className={`dropdown-menu__list ${dropdownMenuIsOpen && 'dropdown-menu__list_open'}`}>
       <li className='dropdown-menu__item'>
           <Link to='/statistics/dealers' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
-            Статистика диллеров
+            Отчеты и аналитика
           </Link>
         </li>
         <li className='dropdown-menu__item'>
           <Link to='/' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
-            Статистика 2
-          </Link>
-        </li>
-        <li className='dropdown-menu__item'>
-          <Link to='/' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
-            Статистика 3
+            Сопоставленные позиции
           </Link>
         </li>
       </ul>

@@ -1,9 +1,15 @@
 .main {
   width: 100%;
-  margin: 50px auto;
-  padding: 0 50px;
+  padding: 50px;
   box-sizing: border-box;
   display: grid;
   grid-template-columns: 1fr 1fr;
   word-wrap: break-word;
+}
+
+
+@media screen and (max-width: 1300px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
 }

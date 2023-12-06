@@ -1,5 +1,5 @@
 class MainApi {
-  constructor(){
+  constructor() {
     this._url = 'http://prosept.sytes.net';
     this._headers = {
       'Content-Type': 'application/json'
@@ -14,20 +14,34 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   };
 
-  getPendingDealersProducts(product) {
+  getAllDealersProducts() {
+    return fetch(`${this._url}/api/dealerprice/`, {
+      headers: this._headers,
+    })
+      .then(res => this._checkResponse(res))
+  }
+
+  getAllDealers() {
+    return fetch(`${this._url}/api/dealer/`, {
+      headers: this._headers,
+    })
+      .then(res => this._checkResponse(res))
+  }
+
+  getPendingDealersProducts() {
     console.log('compare');
-    return fetch(`${this._url}/api/dealerprice/none_status`, {
+    return fetch(`${this._url}/api/dealerprice/none_delay_status`, {
       headers: this._headers,
     })
       .then(res => this._checkResponse(res))
   };
 
   getRecomendation(product) {
-    return fetch(`${this._url}/api/recommendation/?dealer_price_key=${product}`, {
+    return fetch(`${this._url}/api/recommendation/${product}`, {
       method: 'POST',
       headers: this._headers,
     })
-    .then(res => this._checkResponse(res))
+      .then(res => this._checkResponse(res))
   };
 
   updatePosition(productKey, status) {
@@ -38,7 +52,7 @@ class MainApi {
         "status": status,
       })
     })
-    .then(res => this._checkResponse(res))
+      .then(res => this._checkResponse(res))
   };
 
 
@@ -51,7 +65,7 @@ class MainApi {
         "product_id": productId
       })
     })
-    .then(res => this._checkResponse(res))
+      .then(res => this._checkResponse(res))
   };
 
   notComparePosition(product) {

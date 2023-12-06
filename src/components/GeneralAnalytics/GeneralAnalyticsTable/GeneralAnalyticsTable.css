@@ -26,6 +26,10 @@
   max-width: 300px;
 }
 
+.general-analytics-table__cell {
+  line-height: 20px;
+}
+
 table tr:hover {
   background-color: #f2f2f2;
 }
@@ -41,7 +45,8 @@ table tr:hover {
 .general-analytics-table__container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  min-height: 60px;
 }
 
 .general-analytics-table__sort-header {

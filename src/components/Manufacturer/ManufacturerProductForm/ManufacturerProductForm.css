@@ -85,3 +85,9 @@ table tr:hover {
   background: rgb(56, 164, 58);
   color: #fff;
 }
+
+@media screen and (max-width: 1300px) {
+  .manufacturer-buttons {
+    justify-content: center;
+  }
+}
