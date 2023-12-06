@@ -43,7 +43,7 @@ const COLUMNS = [
   },
 ]
 
-function GeneralAnalyticsTable({ dealersProducts, setSelectedDealer }) {
+function GeneralAnalyticsTable({ dealers, dealersProducts, setSelectedDealer }) {
 
   const defaultColumn = useMemo(() => {
     return {
@@ -95,7 +95,7 @@ function GeneralAnalyticsTable({ dealersProducts, setSelectedDealer }) {
                       </p>
                     </div>
                     <div>
-                      {column.canFilter ? column.render('Filter', {setSelectedDealer: setSelectedDealer}) : null}
+                      {column.canFilter ? column.render('Filter', {setSelectedDealer: setSelectedDealer, dealers: dealers}) : null}
                     </div>
                   </div>
                 </th>
