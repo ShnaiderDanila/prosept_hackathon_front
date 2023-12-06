@@ -37,7 +37,7 @@ class MainApi {
   };
 
   getRecomendation(product) {
-    return fetch(`${this._url}/api/recommendation/?dealer_price_key=${product}`, {
+    return fetch(`${this._url}/api/recommendation/${product}`, {
       method: 'POST',
       headers: this._headers,
     })
