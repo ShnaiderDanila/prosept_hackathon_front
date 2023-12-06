@@ -1,5 +1,5 @@
 .dropdown-menu {
-  min-width: 200px;
+  min-width: 220px;
   position: relative;
 }
 
@@ -40,9 +40,8 @@
 
 .dropdown-menu__list {
   width: 100%;
-  min-height: 150px;
   margin: 0;
-  padding: 5px;
+  padding: 5px 5px 15px 5px;
   list-style: none;
   background: linear-gradient(90deg, rgba(56, 164, 58, 1) 0%, rgba(0, 183, 234, 1) 100%);
   border-radius: 12px;
