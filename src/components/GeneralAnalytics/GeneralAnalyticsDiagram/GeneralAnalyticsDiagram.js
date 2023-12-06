@@ -37,7 +37,8 @@ function GeneralAnalyticsDiagram({ dealersProducts, selectedDealer }) {
             {
               labels: ['Да', 'Нет', 'Не рассмотрен'],
               legend: {
-                position: 'bottom'
+                position: 'bottom',
+                fontSize: '14px'
               },
               plotOptions: {
                 pie: {
