@@ -12,3 +12,16 @@
   font-size: 24px;
   font-weight: 700;
 }
+
+
+@media screen and (max-width: 1300px) {
+  .manufacturer {
+    padding: 40px;
+    border-right-style: solid;
+    border-bottom-style: none;
+  }
+
+  .manufacturer__title {
+    margin: 0 0 20px 0;
+  }
+}
