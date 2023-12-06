@@ -8,16 +8,16 @@ function DealerGlobalFilter({ filterValue, setFilterValue }) {
 
   const onChange = useAsyncDebounce(value => {
     setFilterValue(value || undefined)
-    localStorage.setItem('globalFilter', value);
+    localStorage.setItem('dealerGlobalFilter', value);
   }, 300)
 
   useEffect(() => {
-    const localValue = localStorage.getItem('globalFilter')
+    const localValue = localStorage.getItem('dealerGlobalFilter')
     if (localValue) {
       setValue(localValue);
       setFilterValue(localValue);
     }
-  }, [setFilterValue])
+  }, [filterValue, setFilterValue])
 
   return (
     <form className='dealer-global-filter' >
