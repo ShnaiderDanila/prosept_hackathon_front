@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useTable, useSortBy, usePagination } from 'react-table';
 
 import './ManufacturerProductForm.css';
@@ -13,6 +13,8 @@ const COLUMNS = [
         <ManufacturerRadioButton
           rowId={props.row.original.id}
           getRadioValue={props.getRadioValue}
+          setRadioButtonIsSelected={props.setRadioButtonIsSelected}
+          radioButtonIsSelected={props.radioButtonIsSelected}
         />
       )
     },
@@ -35,6 +37,12 @@ const COLUMNS = [
 function ManufacturerProductForm(props) {
 
   const [value, setValue] = useState(null);
+
+  const [radioButtonIsSelected, setRadioButtonIsSelected] = useState(null);
+
+  useEffect(() => {
+    setRadioButtonIsSelected(null)
+  }, [props.recommendation])
 
   const columns = useMemo(() => COLUMNS, []);
 
@@ -100,7 +108,9 @@ function ManufacturerProductForm(props) {
               <tr {...row.getRowProps()}>
                 {
                   row.cells.map((cell) => {
-                    return <td className='manufacturer-table__cell' {...cell.getCellProps()}>{cell.render('Cell', { getRadioValue: getRadioValue })}</td>
+                    return <td className='manufacturer-table__cell' {...cell.getCellProps()}>
+                      {cell.render('Cell', { getRadioValue: getRadioValue, setRadioButtonIsSelected: setRadioButtonIsSelected, radioButtonIsSelected: radioButtonIsSelected })}
+                    </td>
                   })
                 }
               </tr>
@@ -111,9 +121,24 @@ function ManufacturerProductForm(props) {
       {props.recommendation.length > 1 &&
         (
           <div className="manufacturer-buttons">
-            <button className='manufacturer-button' type='submit'>Да</button>
-            <button className='manufacturer-button' type='button' onClick={handleNotComparePosition}>Нет</button>
-            <button className='manufacturer-button' type='button' onClick={handlePostponePosition}>Отложить</button>
+            <button
+              className={`manufacturer-button ${!radioButtonIsSelected ? 'manufacturer-button_disabled' : 'manufacturer-button_enabled'}`}
+              type='submit'
+              disabled={!radioButtonIsSelected}>
+              Да
+            </button>
+            <button
+              className='manufacturer-button manufacturer-button_enabled'
+              type='button'
+              onClick={handleNotComparePosition}>
+              Нет
+            </button>
+            <button
+              className='manufacturer-button manufacturer-button_enabled'
+              type='button'
+              onClick={handlePostponePosition}>
+              Отложить
+            </button>
           </div>
         )
       }
