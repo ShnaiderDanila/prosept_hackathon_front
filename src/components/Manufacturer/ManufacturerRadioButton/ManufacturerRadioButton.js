@@ -4,13 +4,22 @@ import './ManufacturerRadioButton.css';
 
 function ManufacturerRadioButton(props) {
 
-  function handleChange () {
-
+  function handleChange(evt) {
+    props.setRadioButtonIsSelected(props.rowId)
     props.getRadioValue(props.rowId)
   }
 
   return (
-      <input className='manufacturer-radio-button' type='radio' name="name" onChange={handleChange}/>
+    <label className='manufacturer-radio-button-label' htmlFor={props.rowId}>
+      <input
+        className='manufacturer-radio-button-input'
+        id={props.rowId}
+        type='radio'
+        name="product"
+        checked={props.radioButtonIsSelected === props.rowId}
+        onChange={handleChange} />
+      <div className='manufacturer-radio-button'></div>
+    </label >
   )
 };
 
