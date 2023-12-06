@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from 'react-table';
 
 import './DealerProductTable.css';
@@ -8,14 +8,11 @@ import DealerColumnFilter from '../DealerColumnFilter/DealerColumnFilter';
 import DealerPagination from '../DealerPagination/DealerPagination';
 import DealerRadioButton from '../DealerRadioButton/DealerRadioButton';
 
-// import { productArr } from '../../../utils/constants';
-
 const COLUMNS = [
   {
     Header: 'Выберите товар',
     disableFilters: true,
     Cell: (props) => {
-      // console.log(props.row.values.product_key);
       return (
       <DealerRadioButton
       rowId={props.row.values.product_key}
@@ -25,19 +22,13 @@ const COLUMNS = [
     disableSortBy: true,
   },
   {
-    Header: 'ID',
-    accessor: 'id',
-    enableHiding: false,
-    disableFilters: true,
-  },
-  {
-    Header: 'product_key',
+    Header: 'Артикул',
     accessor: 'product_key',
     enableHiding: false,
     disableFilters: true,
   },
   {
-    Header: 'Название товара',
+    Header: 'Наименование товара',
     accessor: 'product_name',
     Cell: ({ row }) =>
       <a
@@ -48,7 +39,7 @@ const COLUMNS = [
       </a>
   },
   {
-    Header: 'Цена (руб.)',
+    Header: 'Цена',
     accessor: 'price',
   },
   {
@@ -59,9 +50,6 @@ const COLUMNS = [
 
 function DealerProductTable(props) {
 
-  // console.log(props);
-  // const columns = useMemo(() => COLUMNS, []);
-  // const data = useMemo(() => props.pendingDealersProducts, []);
   const defaultColumn = useMemo(() => {
     return {
       Filter: DealerColumnFilter
