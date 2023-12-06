@@ -29,10 +29,9 @@ const COLUMNS = [
     Header: 'Продавец',
     accessor: 'dealer_name',
     disableSortBy: true,
-    // filter: 'equals',
   },
   {
-    Header: 'Дата',
+    Header: 'Дата записи',
     accessor: 'date',
     disableFilters: true,
   },
