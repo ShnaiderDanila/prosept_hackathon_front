@@ -1,15 +1,21 @@
-import React from 'react';
-
 import './DealerRadioButton.css';
 
 function DealerRadioButton(props) {
 
-  function handleChange () {
+  function handleChange() {
     props.getRecomendationToDealerProduct(props.rowId)
   }
 
   return (
-      <input className='dealer-radio-button' type='radio' name="name" onChange={handleChange}/>
+    <label className='dealer-radio-button-label' htmlFor={props.rowId}>
+      <input
+        id={props.rowId}
+        className='dealer-radio-button-input'
+        type='radio'
+        name="dealerProduct"
+        onChange={handleChange} />
+      <div className='dealer-radio-button'></div>
+    </label>
   )
 };
 

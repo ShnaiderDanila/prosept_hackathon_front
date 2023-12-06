@@ -18,47 +18,53 @@ function App() {
 
   function handleComparePosition(productId) {
     Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, "Да")])
-    .then(([compareStatus, updateStatus]) => {
-      console.log(compareStatus);
-      console.log(updateStatus);
-    })
-    .catch((err) => console.log(err));
+      .then(() => {
+        setRecommendation([]);
+        getPendingDealersProducts();
+      })
+      .catch((err) => console.log(err));
 
   }
 
   function handleNotComparePosition() {
     mainApi.updatePosition(productKey, "Нет")
-    .then((notCompareStatus) => {
-      console.log(notCompareStatus);
-    })
-    .catch((err) => console.log(err));
+      .then(() => {
+        setRecommendation([]);
+        getPendingDealersProducts();
+      })
+      .catch((err) => console.log(err));
   }
 
   function handlePostponePosition() {
     mainApi.updatePosition(productKey, "Отложить")
-    .then((postponeStatus) => {
-      console.log(postponeStatus);
-    })
-    .catch((err) => console.log(err));
+      .then(() => {
+        setRecommendation([]);
+        getPendingDealersProducts();
+      })
+      .catch((err) => console.log(err));
   }
 
   function getRecomendationToDealerProduct(value) {
     setProductKey(value)
     mainApi.getRecomendation(value)
-    .then((recommendation) => {
-      setRecommendation(recommendation);
-      console.log(recommendation);
-    })
-    .catch((err) => console.log(err));
+      .then((recommendation) => {
+        setRecommendation(recommendation);
+        console.log(recommendation);
+      })
+      .catch((err) => console.log(err));
   }
 
-  useEffect(() => {
+  function getPendingDealersProducts() {
     mainApi.getPendingDealersProducts()
       .then((pendingDealersProducts) => {
         setPendingDealersProducts(pendingDealersProducts);
         console.log(pendingDealersProducts);
       })
       .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    getPendingDealersProducts();
   }, []);
 
   return (
@@ -73,7 +79,7 @@ function App() {
           recommendation={recommendation}
           getRecomendationToDealerProduct={getRecomendationToDealerProduct}
         />} />
-        <Route path="/statistics/dealers" element={<GeneralAnalytics/>} />
+        <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

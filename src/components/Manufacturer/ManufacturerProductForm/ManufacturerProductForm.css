@@ -72,18 +72,26 @@ table tr:hover {
   min-width: 140px;
   padding: 10px;
   outline: none;
-  border: 2px solid rgb(56, 164, 58);
   border-radius: 25px;
-  background-color: #fff;
   text-align: center;
   font-size: 14px;
-  color: #222;
-  cursor: pointer;
+  background-color: #fff;
 }
 
-.manufacturer-button:hover {
+.manufacturer-button:enabled {
+  cursor: pointer;
+  color: #222;
+  border: 2px solid rgb(56, 164, 58);
+}
+
+.manufacturer-button_enabled:hover {
   background: rgb(56, 164, 58);
   color: #fff;
+}
+
+.manufacturer-button_disabled {
+  color: #aab1b4;
+  border: 2px solid #aab1b4;
 }
 
 @media screen and (max-width: 1300px) {
