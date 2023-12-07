@@ -20,22 +20,32 @@ https://github.com/kotbegemot1/prosept_hackathon_front
 
 Остальные директории вспомогательные, создаются при необходимости разработчиком
 
-## Запуск проекта
+## Билд и запуск проекта
 
-`npm run start` — запускает сервер
+`npm ci` — установка нужных зависимостей
 
-## Ссылка на макет
+`npm run dev` — запускает проекта в дев-режиме
 
-Figma https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-9662&mode=design&t=2SYhxchiR8XPzGjj-0
+`npm run build` — прод билд
+`npm run start` — запускает проекта в прод-режиме
 
-## Ссылка на проект на Github
+## Стек технологий
 
-https://github.com/kotbegemot1/prosept_hackathon_front
+HTML5, CSS3, Javascript, React, React-table, Apexcharts.js, React router, Git, CRA, Docker
 
-## Ссылка на задеплоенный на сервере проект
+## Ссылки на фреймворки, библиотеки, иконки и шрифты
 
-https://yadiplom.nomoredomainsicu.ru/
+CRA - https://create-react-app.dev/
 
-## Ссылка на пул реквест level-3
+React - https://ru.legacy.reactjs.org/
 
-https://github.com/kotbegemot1/movies-explorer-frontend/pull/2
+React-table - https://tanstack.com/table/v8/docs/adapters/react-table
+
+React-router - https://reactrouter.com/en/main
+
+Apexchats - https://apexcharts.com/docs/react-charts/
+
+Git - https://git-scm.com/
+
+Docker - https://www.docker.com/
+
