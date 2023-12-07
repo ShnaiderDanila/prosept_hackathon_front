@@ -2,6 +2,7 @@
   padding: 50px;
   flex: 1;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .general-analytics__title {
