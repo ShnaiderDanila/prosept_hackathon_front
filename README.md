@@ -27,6 +27,7 @@ https://github.com/kotbegemot1/prosept_hackathon_front
 `npm run dev` — запускает проекта в дев-режиме
 
 `npm run build` — прод билд
+
 `npm run start` — запускает проекта в прод-режиме
 
 ## Стек технологий
