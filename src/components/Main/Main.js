@@ -14,11 +14,14 @@ export default function Main(props) {
         onPostonePosition={props.onPostonePosition}
         recommendation={props.recommendation}
         isLoadingRecomendations={props.isLoadingRecomendations}
+        popup={props.popup}
       />
       <Dealer
         pendingDealersProducts={props.pendingDealersProducts}
         getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
         isLoadingDealerProducts={props.isLoadingDealerProducts}
+        dealers={props.dealers}
+
       />
     </main>
   )

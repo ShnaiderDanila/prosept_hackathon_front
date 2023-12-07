@@ -15,9 +15,20 @@ function App() {
   const [pendingDealersProducts, setPendingDealersProducts] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
   const [productKey, setProductKey] = useState('');
+  const [dealers, setDealers] = useState([]);
+  const [popup, setPopup] = useState('');
+  const [error, setError] = useState('');
 
   const [isLoadingDealerProducts, setIsLoadingDealerProducts] = useState(false);
   const [isLoadingRecomendations, setIsLoadingRecomendations] = useState(false);
+
+  function showPopupMsg(msg) {
+    setPopup(msg)
+    setTimeout(() => {
+      setPopup('');
+    }, 2000);
+
+  }
 
   function handleComparePosition(productId) {
     setIsLoadingDealerProducts(true);
@@ -25,12 +36,12 @@ function App() {
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
+        showPopupMsg("Связь успешно установлена")
       })
       .catch((err) => console.log(err))
       .finally(() => {
         setIsLoadingDealerProducts(false)
       });
-
   }
 
   function handleNotComparePosition() {
@@ -48,7 +59,7 @@ function App() {
 
   function handlePostponePosition() {
     setIsLoadingDealerProducts(true);
-    mainApi.updatePosition(productKey, "Отложить")
+    mainApi.updatePosition(productKey, "Отложено")
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
@@ -78,8 +89,8 @@ function App() {
       .then((pendingDealersProducts) => {
         mainApi.getAllDealers()
           .then((arr) => {
-            // const newArr = arr.sort((a, b) => a.name.localeCompare(b.name));
-            // setDealers(newArr);
+            const newArr = arr.sort((a, b) => a.name.localeCompare(b.name));
+            setDealers(newArr);
             for (let i = 0; i < pendingDealersProducts.length; i++) {
               const dealerId = pendingDealersProducts[i].dealer_id;
               const dealer = arr.find(dealer => dealer.id === dealerId);
@@ -116,6 +127,8 @@ function App() {
           getRecomendationToDealerProduct={getRecomendationToDealerProduct}
           isLoadingDealerProducts={isLoadingDealerProducts}
           isLoadingRecomendations={isLoadingRecomendations}
+          popup={popup}
+          dealers={dealers}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
         <Route path="*" element={<NotFound />} />
