@@ -14,8 +14,6 @@ import {
 
 function MatchedProductsFilter(props) {
 
-  console.log(props.dealers);
-
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
 
   const dropdownMenuRef = useRef(null);

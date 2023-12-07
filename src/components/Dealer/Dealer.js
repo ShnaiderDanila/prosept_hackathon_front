@@ -16,7 +16,6 @@ function Dealer(props) {
           getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
           dealers={props.dealers}
         />}
-
     </section>
   )
 };

@@ -58,10 +58,12 @@ const COLUMNS = [
   {
     Header: seller,
     accessor: 'dealer_name',
+    disableSortBy: true,
   },
   {
     Header: recordingDate,
     accessor: 'date',
+    disableFilters: true,
   },
   {
     Header: status,
@@ -121,7 +123,7 @@ function DealerProductTable(props) {
                       </p>
                     </div>
                     <div>
-                      {column.canFilter ? column.render('Filter', {dealers: props.dealers}) : null}
+                      {column.canFilter ? column.render('Filter', { dealers: props.dealers }) : null}
                     </div>
                   </div>
                 </th>
@@ -139,7 +141,8 @@ function DealerProductTable(props) {
                     return <td className='dealer-table__cell'
                       {...cell.getCellProps()}>
                       {cell.render('Cell',
-                        { getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
+                        {
+                          getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
                           pendingDealersProducts: props.pendingDealersProducts,
                         })}
                     </td>
@@ -149,6 +152,7 @@ function DealerProductTable(props) {
             )
           })}
         </tbody>
+
       </table>
       <DealerPagination
         pageIndex={pageIndex}

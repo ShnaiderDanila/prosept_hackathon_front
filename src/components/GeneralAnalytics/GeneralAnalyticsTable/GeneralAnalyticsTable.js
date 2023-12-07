@@ -9,6 +9,7 @@ import {
   seller,
   price,
   status,
+  article,
 } from '../../../utils/constants';
 
 import GeneralAnalyticsPagination from '../GeneralAnalyticsPagination/GeneralAnalyticsPagination';
@@ -16,6 +17,10 @@ import GeneralAnalyticsFilter from '../GeneralAnalyticsFilter/GeneralAnalyticsFi
 import Preloader from '../../Preloader/Preloader';
 
 const COLUMNS = [
+  {
+    Header: article,
+    accessor: 'product_key',
+  },
   {
     Header: nameOfProduct,
     accessor: 'product_name',
@@ -40,6 +45,7 @@ const COLUMNS = [
   {
     Header: recordingDate,
     accessor: 'date',
+    disableFilters: true,
   },
   {
     Header: status,

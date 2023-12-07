@@ -40,9 +40,9 @@ function App() {
     }, 2000);
   }
 
-  function handleComparePosition(productId) {
+  function handleComparePosition(productId, matchingPos) {
     setIsLoadingDealerProducts(true);
-    Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, yes)])
+    Promise.all([mainApi.comparePosition(productKey, productId, matchingPos), mainApi.updatePosition(productKey, yes)])
       .then(() => {
         setRecommendation([]);
         setPendingDealersProducts([]);
@@ -54,8 +54,11 @@ function App() {
         setRecommendation([]);
         showPopupMsg(setError, somethingWentWrong)
       })
+      // Set-timeout для более наглядной презентации проекта
       .finally(() => {
-        setIsLoadingDealerProducts(false)
+        setTimeout(() => {
+          setIsLoadingDealerProducts(false)
+        }, 1000)
       });
   }
 
@@ -64,6 +67,7 @@ function App() {
     mainApi.updatePosition(productKey, no)
       .then(() => {
         setRecommendation([]);
+        setPendingDealersProducts([]);
         getPendingDealersProducts();
         showPopupMsg(setPopup, notMacthed)
       })
@@ -72,8 +76,11 @@ function App() {
         setRecommendation([]);
         showPopupMsg(setError, somethingWentWrong)
       })
+      // Set-timeout для более наглядной презентации проекта
       .finally(() => {
-        setIsLoadingDealerProducts(false)
+        setTimeout(() => {
+          setIsLoadingDealerProducts(false)
+        }, 1000)
       });
   }
 
@@ -82,6 +89,7 @@ function App() {
     mainApi.updatePosition(productKey, postponed)
       .then(() => {
         setRecommendation([]);
+        setPendingDealersProducts([]);
         getPendingDealersProducts();
         showPopupMsg(setPopup, matchingPostponed)
       })
@@ -90,8 +98,11 @@ function App() {
         setRecommendation([]);
         showPopupMsg(setError, somethingWentWrong)
       })
+      // Set-timeout для более наглядной презентации проекта
       .finally(() => {
-        setIsLoadingDealerProducts(false)
+        setTimeout(() => {
+          setIsLoadingDealerProducts(false)
+        }, 1000)
       });
   }
 
@@ -157,7 +168,7 @@ function App() {
           error={error}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
-        <Route path="/statistics/matches" element={<MatchedProducts dealers={dealers}/>} />
+        <Route path="/statistics/matches" element={<MatchedProducts dealers={dealers} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

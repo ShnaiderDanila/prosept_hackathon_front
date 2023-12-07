@@ -1,6 +1,6 @@
 .matched-products-delete-button {
   display: block;
-  min-width: 140px;
+  width: 100%;
   margin: 0 auto;
   padding: 10px;
   outline: none;

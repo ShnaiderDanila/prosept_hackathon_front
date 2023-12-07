@@ -30,8 +30,11 @@ export default function MatchedProducts({ dealers }) {
         <MatchedProductsTable
           isLoadingMatchedProducts={isLoadingMatchedProducts}
           matchedProducts={matchedProducts}
-          dealers={dealers} />
+          dealers={dealers}
+          setMatchedProducts={setMatchedProducts}
+          setIsLoadingMatchedProducts={setIsLoadingMatchedProducts} />
       </div>
+
     </section>
   )
 }

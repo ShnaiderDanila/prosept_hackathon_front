@@ -13,6 +13,7 @@ import {
   recordingDate,
   seller,
   status,
+  article,
 } from '../../../utils/constants';
 
 function GeneralAnalyticsFilter(props) {
@@ -53,7 +54,7 @@ function GeneralAnalyticsFilter(props) {
 
   useOutsideClick(dropdownMenuRef, handleCloseDropdownMenu, dropdownMenuIsOpen)
 
-  if (props.column.Header === nameOfProduct || props.column.Header === recordingDate) {
+  if (props.column.Header === nameOfProduct || props.column.Header === recordingDate || props.column.Header === article) {
     return (
       <form className='general-analytics-filter-form' >
         <input

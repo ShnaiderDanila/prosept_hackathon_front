@@ -65,7 +65,7 @@ function GeneralAnalyticsDiagram({ dealersProducts, selectedDealer, isLoadingGen
             }
             series={[valueYes, valueNo, valueNotReviewed, valuePostponed]}
             type="donut"
-            width="400"
+            width="370"
           />
         </div>
       }

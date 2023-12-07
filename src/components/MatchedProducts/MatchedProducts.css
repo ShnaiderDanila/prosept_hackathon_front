@@ -18,3 +18,10 @@
   padding-bottom: 14px;
   border-bottom: 1px solid #e5e5e5;
 }
+
+@media screen and (max-width: 1700px) {
+  .matched-products {
+    padding: 50px 30px;
+  }
+}
+

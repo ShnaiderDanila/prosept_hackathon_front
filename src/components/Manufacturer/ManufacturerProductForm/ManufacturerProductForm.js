@@ -19,9 +19,11 @@ const COLUMNS = [
       return (
         <ManufacturerRadioButton
           rowId={props.row.original.id}
+          rowIndex={props.row.index}
           getRadioValue={props.getRadioValue}
           setRadioButtonIsSelected={props.setRadioButtonIsSelected}
           radioButtonIsSelected={props.radioButtonIsSelected}
+          getMatchingPos={props.getMatchingPos}
         />
       )
     },
@@ -45,6 +47,7 @@ function ManufacturerProductForm(props) {
 
   const [value, setValue] = useState(null);
   const [radioButtonIsSelected, setRadioButtonIsSelected] = useState(null);
+  const [matchingPos, setMatchingPos] = useState(null);
 
   useEffect(() => {
     setRadioButtonIsSelected(null)
@@ -69,10 +72,14 @@ function ManufacturerProductForm(props) {
     setValue(value)
   }
 
+  function getMatchingPos(matchingPos) {
+    setMatchingPos(matchingPos);
+  }
+
   function handleSubmit(event) {
     getRadioValue()
     event.preventDefault()
-    props.onComparePosition(value)
+    props.onComparePosition(value, matchingPos)
   }
 
   function handleNotComparePosition() {
@@ -118,7 +125,8 @@ function ManufacturerProductForm(props) {
                       {cell.render('Cell', {
                         getRadioValue: getRadioValue,
                         setRadioButtonIsSelected: setRadioButtonIsSelected,
-                        radioButtonIsSelected: radioButtonIsSelected
+                        radioButtonIsSelected: radioButtonIsSelected,
+                        getMatchingPos: getMatchingPos,
                       })}
                     </td>
                   })

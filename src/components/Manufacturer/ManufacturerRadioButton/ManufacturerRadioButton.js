@@ -7,7 +7,7 @@ function ManufacturerRadioButton(props) {
   function handleChange(evt) {
     props.setRadioButtonIsSelected(props.rowId);
     props.getRadioValue(props.rowId);
-    props.setMatchingPos(props.rowIndex + 1);
+    props.getMatchingPos(props.rowIndex + 1);
   }
 
   return (

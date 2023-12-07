@@ -1,6 +1,6 @@
 class MainApi {
   constructor() {
-    this._url = 'http://prosept.sytes.net';
+    this._url = 'http://localhost:8000';
     this._headers = {
       'Content-Type': 'application/json'
     }
@@ -54,13 +54,14 @@ class MainApi {
       .then(res => this._checkResponse(res))
   };
 
-  comparePosition(productKey, productId) {
+  comparePosition(productKey, productId, matchingPos) {
     return fetch(`${this._url}/api/productdealerkey/`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         "key_id": productKey,
-        "product_id": productId
+        "product_id": productId,
+        "matching_position": matchingPos,
       })
     })
       .then(res => this._checkResponse(res))

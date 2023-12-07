@@ -20,6 +20,7 @@ const seller = 'Продавец';
 const selectProduct = 'Выберите товар';
 const price = 'Цена';
 const status = 'Статус';
+const matchingPos = 'Индекс сопоставления';
 const deleteMatched = 'Удалить связь';
 
 const minNumbOfPages = '10';
@@ -54,6 +55,7 @@ export {
   selectProduct,
   price,
   status,
+  matchingPos,
   deleteMatched,
   notFoundError,
   notFoundErrorMessage,

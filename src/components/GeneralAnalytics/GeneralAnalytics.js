@@ -36,8 +36,11 @@ export default function GeneralAnalytics() {
           })
           .finally(() => {
             setIsLoadingGeneralAnalytics(false)
-          });
+          })
       })
+      .catch((err) => {
+        console.error(err)
+      });
   }, []);
 
   return (
