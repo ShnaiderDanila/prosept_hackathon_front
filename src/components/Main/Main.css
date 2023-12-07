@@ -3,8 +3,15 @@
   padding: 50px;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   word-wrap: break-word;
+}
+
+@media screen and (max-width: 1600px) {
+  .main {
+    padding: 50px 30px;
+    grid-template-columns: auto auto;
+  }
 }
 
 

@@ -13,10 +13,12 @@ export default function Main(props) {
         onNotComparePosition={props.onNotComparePosition}
         onPostonePosition={props.onPostonePosition}
         recommendation={props.recommendation}
+        isLoadingRecomendations={props.isLoadingRecomendations}
       />
       <Dealer
         pendingDealersProducts={props.pendingDealersProducts}
         getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
+        isLoadingDealerProducts={props.isLoadingDealerProducts}
       />
     </main>
   )
