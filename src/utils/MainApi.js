@@ -29,7 +29,6 @@ class MainApi {
   }
 
   getPendingDealersProducts() {
-    console.log('compare');
     return fetch(`${this._url}/api/dealerprice/none_delay_status`, {
       headers: this._headers,
     })
@@ -55,7 +54,6 @@ class MainApi {
       .then(res => this._checkResponse(res))
   };
 
-
   comparePosition(productKey, productId) {
     return fetch(`${this._url}/api/productdealerkey/`, {
       method: 'POST',
@@ -74,6 +72,14 @@ class MainApi {
     })
       .then(res => this._checkResponse(res))
   };
+
+  deleteMatchedProducts(dealerPriceKey) {
+    return fetch(`${this._url}/api/productdealerkey/${dealerPriceKey}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+      .then(res => this._checkResponse(res))
+  }
 
 }
 
