@@ -12,7 +12,6 @@ export default function GeneralAnalytics() {
   const [dealersProducts, setDealersProducts] = useState([]);
   const [dealers, setDealers] = useState([]);
   const [selectedDealer, setSelectedDealer] = useState(null)
-
   const [isLoadingGeneralAnalytics, setIsLoadingGeneralAnalytics] = useState(false);
 
   useEffect(() => {
@@ -37,8 +36,11 @@ export default function GeneralAnalytics() {
           })
           .finally(() => {
             setIsLoadingGeneralAnalytics(false)
-          });
+          })
       })
+      .catch((err) => {
+        console.error(err)
+      });
   }, []);
 
   return (

@@ -3,6 +3,16 @@ import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from 
 
 import './DealerProductTable.css';
 
+import {
+  nameOfProduct,
+  recordingDate,
+  seller,
+  selectProduct,
+  article,
+  price,
+  status,
+} from '../../../utils/constants';
+
 import DealerGlobalFilter from '../DealerGlobalFilter/DealerGlobalFilter';
 import DealerColumnFilter from '../DealerColumnFilter/DealerColumnFilter';
 import DealerPagination from '../DealerPagination/DealerPagination';
@@ -10,27 +20,29 @@ import DealerRadioButton from '../DealerRadioButton/DealerRadioButton';
 
 const COLUMNS = [
   {
-    Header: 'Выберите товар',
+    Header: selectProduct,
     disableFilters: true,
     Cell: (props) => {
       return (
         <DealerRadioButton
+          rowStatus={props.row.values.status}
           rowId={props.row.values.product_key}
           getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
           pendingDealersProducts={props.pendingDealersProducts}
+          setIsPostponed={props.setIsPostponed}
         />
       )
     },
     disableSortBy: true,
   },
   {
-    Header: 'Артикул',
+    Header: article,
     accessor: 'product_key',
     enableHiding: false,
     disableFilters: true,
   },
   {
-    Header: 'Наименование товара',
+    Header: nameOfProduct,
     accessor: 'product_name',
     Cell: ({ row }) =>
       <a
@@ -41,20 +53,22 @@ const COLUMNS = [
       </a>
   },
   {
-    Header: 'Цена',
+    Header: price,
     accessor: 'price',
     disableFilters: true,
   },
   {
-    Header: 'Продавец',
+    Header: seller,
     accessor: 'dealer_name',
+    disableSortBy: true,
   },
   {
-    Header: "Дата записи",
+    Header: recordingDate,
     accessor: 'date',
+    disableFilters: true,
   },
   {
-    Header: "Статус",
+    Header: status,
     accessor: 'status',
     disableFilters: true,
   },
@@ -111,7 +125,7 @@ function DealerProductTable(props) {
                       </p>
                     </div>
                     <div>
-                      {column.canFilter ? column.render('Filter', {dealers: props.dealers}) : null}
+                      {column.canFilter ? column.render('Filter', { dealers: props.dealers }) : null}
                     </div>
                   </div>
                 </th>
@@ -129,8 +143,10 @@ function DealerProductTable(props) {
                     return <td className='dealer-table__cell'
                       {...cell.getCellProps()}>
                       {cell.render('Cell',
-                        { getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
+                        {
+                          getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
                           pendingDealersProducts: props.pendingDealersProducts,
+                          setIsPostponed: props.setIsPostponed
                         })}
                     </td>
                   })
@@ -139,6 +155,7 @@ function DealerProductTable(props) {
             )
           })}
         </tbody>
+
       </table>
       <DealerPagination
         pageIndex={pageIndex}

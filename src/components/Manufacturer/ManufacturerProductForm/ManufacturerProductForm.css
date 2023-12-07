@@ -112,7 +112,6 @@ table tr:hover {
   color: #222;
 }
 
-
 @media screen and (max-width: 1500px) {
   .manufacturer-table__header-cell {
     min-width: 80px;

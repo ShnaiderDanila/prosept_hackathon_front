@@ -1,9 +1,9 @@
 import React from 'react';
 
+import './Manufacturer.css';
+
 import ManufacturerProductForm from './ManufacturerProductForm/ManufacturerProductForm';
 import Preloader from '../Preloader/Preloader';
-
-import './Manufacturer.css';
 
 function Manufacturer(props) {
 
@@ -19,7 +19,8 @@ function Manufacturer(props) {
           recommendation={props.recommendation}
           popup={props.popup}
           error={props.error}
-          />}
+          isPostponed={props.isPostponed}
+        />}
     </section>
   )
 };

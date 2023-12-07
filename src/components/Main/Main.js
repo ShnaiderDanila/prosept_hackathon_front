@@ -13,6 +13,7 @@ export default function Main(props) {
         onNotComparePosition={props.onNotComparePosition}
         onPostonePosition={props.onPostonePosition}
         recommendation={props.recommendation}
+        isPostponed={props.isPostponed}
         isLoadingRecomendations={props.isLoadingRecomendations}
         popup={props.popup}
         error={props.error}
@@ -22,7 +23,7 @@ export default function Main(props) {
         getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
         isLoadingDealerProducts={props.isLoadingDealerProducts}
         dealers={props.dealers}
-
+        setIsPostponed={props.setIsPostponed}
       />
     </main>
   )

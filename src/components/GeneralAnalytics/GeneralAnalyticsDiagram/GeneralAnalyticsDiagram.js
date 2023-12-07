@@ -32,7 +32,6 @@ function GeneralAnalyticsDiagram({ dealersProducts, selectedDealer, isLoadingGen
     }
   }, [selectedDealer, dealersProducts])
 
-
   return (
     <div className="general-analytics-diagram">
       <h2 className='general-analytics-diagram___title'>Аналитика по дилерам</h2>
@@ -66,7 +65,7 @@ function GeneralAnalyticsDiagram({ dealersProducts, selectedDealer, isLoadingGen
             }
             series={[valueYes, valueNo, valueNotReviewed, valuePostponed]}
             type="donut"
-            width="400"
+            width="370"
           />
         </div>
       }

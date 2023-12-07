@@ -21,6 +21,7 @@ function DealerRadioButton(props) {
 
   function handleChange() {
     props.getRecomendationToDealerProduct(props.rowId)
+    props.setIsPostponed(props.rowStatus)
   }
 
   return (

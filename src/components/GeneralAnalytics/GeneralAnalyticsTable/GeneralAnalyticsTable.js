@@ -3,13 +3,26 @@ import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
 
 import './GeneralAnalyticsTable.css';
 
+import {
+  nameOfProduct,
+  recordingDate,
+  seller,
+  price,
+  status,
+  article,
+} from '../../../utils/constants';
+
 import GeneralAnalyticsPagination from '../GeneralAnalyticsPagination/GeneralAnalyticsPagination';
 import GeneralAnalyticsFilter from '../GeneralAnalyticsFilter/GeneralAnalyticsFilter';
 import Preloader from '../../Preloader/Preloader';
 
 const COLUMNS = [
   {
-    Header: 'Наименование товара',
+    Header: article,
+    accessor: 'product_key',
+  },
+  {
+    Header: nameOfProduct,
     accessor: 'product_name',
     Cell: ({ row }) =>
       <a
@@ -20,21 +33,22 @@ const COLUMNS = [
       </a>
   },
   {
-    Header: 'Цена',
+    Header: price,
     accessor: 'price',
     disableFilters: true,
   },
   {
-    Header: 'Продавец',
+    Header: seller,
     accessor: 'dealer_name',
     disableSortBy: true,
   },
   {
-    Header: 'Дата записи',
+    Header: recordingDate,
     accessor: 'date',
+    disableFilters: true,
   },
   {
-    Header: 'Статус сопоставления',
+    Header: status,
     accessor: 'status',
     disableSortBy: true,
   },

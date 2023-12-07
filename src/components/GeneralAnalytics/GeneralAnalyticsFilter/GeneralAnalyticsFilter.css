@@ -1,6 +1,6 @@
 .general-analytics-filter-input {
   width: 100%;
-  min-width: 100px;
+  min-width: 150px;
   padding: 6px 12px 6px 36px;
   background-color: #f2f2f2;
   background-image: url('../../../images/dealer-search-icon.svg');
@@ -18,7 +18,7 @@
 
 .general-analytics-dropdown-menu {
   width: 100%;
-  min-width: 160px;
+  min-width: 150px;
   position: relative;
   margin: 10px auto 0 auto;
 }
