@@ -68,20 +68,11 @@ class MainApi {
       .then(res => this._checkResponse(res))
   };
 
-  notComparePosition(product) {
-    console.log('notCompare');
-    // return fetch(`${this._url}/users/me`, {
-    //   credentials: 'include',
-    // })
-    //   .then(res => this._checkResponse(res))
-  };
-
-  postponePosition(product) {
-    console.log('postponePosition');
-    // return fetch(`${this._url}/users/me`, {
-    //   credentials: 'include',
-    // })
-    //   .then(res => this._checkResponse(res))
+  getMatchedProducts() {
+    return fetch(`${this._url}/api/productdealerkey/`, {
+      headers: this._headers,
+    })
+      .then(res => this._checkResponse(res))
   };
 
 }
