@@ -6,7 +6,7 @@ import { mainApi } from '../../utils/MainApi';
 
 import MatchedProductsTable from './MatchedProductsTable/MatchedProductsTable';
 
-export default function MatchedProducts() {
+export default function MatchedProducts({ dealers }) {
 
   const [isLoadingMatchedProducts, setIsLoadingMatchedProducts] = useState(false);
   const [matchedProducts, setMatchedProducts] = useState([]);
@@ -27,7 +27,10 @@ export default function MatchedProducts() {
     <section className='matched-products'>
       <div className='matched-products__container'>
         <h2 className='matched-products__title'>Сопоставленные позиции</h2>
-        <MatchedProductsTable isLoadingMatchedProducts={isLoadingMatchedProducts} matchedProducts={matchedProducts} />
+        <MatchedProductsTable
+          isLoadingMatchedProducts={isLoadingMatchedProducts}
+          matchedProducts={matchedProducts}
+          dealers={dealers} />
       </div>
     </section>
   )

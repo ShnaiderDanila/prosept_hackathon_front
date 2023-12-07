@@ -3,7 +3,18 @@ import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import './MatchedProductsFilter.css';
 
+import {
+  all,
+  dealerProductName,
+  manufacturerProductName,
+  dealerArticle,
+  manufaturerArticle,
+  seller,
+} from '../../../utils/constants.js';
+
 function MatchedProductsFilter(props) {
+
+  console.log(props.dealers);
 
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
 
@@ -20,23 +31,21 @@ function MatchedProductsFilter(props) {
   }
 
   function handleSelectDealer(e) {
-    if (e.target.classList.contains('general-analytics-dropdown-menu__item')) {
+    if (e.target.classList.contains('matched-products-dropdown-menu__item')) {
       setDropdownMenuIsOpen(!dropdownMenuIsOpen)
       setFilter(e.target.textContent)
-      props.setSelectedDealer(e.target.textContent)
     }
-    if (e.target.textContent === 'Все') {
+    if (e.target.textContent === all) {
       setFilter(null)
-      props.setSelectedDealer(null)
     }
   }
 
   useOutsideClick(dropdownMenuRef, handleCloseDropdownMenu, dropdownMenuIsOpen)
 
-  if (props.column.Header === 'Наименование товара дилера'
-    || props.column.Header === 'Наименование товара производителя'
-    || props.column.Header === 'Артикул товара дилера'
-    || props.column.Header === 'Артикул товара производителя') {
+  if (props.column.Header === dealerProductName
+    || props.column.Header === manufacturerProductName
+    || props.column.Header === dealerArticle
+    || props.column.Header === manufaturerArticle) {
     return (
       <form className='matched-products-filter-form' >
         <input
@@ -51,18 +60,18 @@ function MatchedProductsFilter(props) {
     return (
       <div className='matched-products-dropdown-menu'>
         <div ref={dropdownMenuRef} className='matched-products-dropdown-menu__select' onClick={handleOpenDropdownMenu}>
-          <span className='matched-products-dropdown-menu__selected'>{filterValue ? filterValue : 'Все'} </span>
+          <span className='matched-products-dropdown-menu__selected'>{filterValue ? filterValue : all} </span>
           <div className={`matched-products-dropdown-menu__caret`}></div>
         </div>
-        {props.column.Header === 'Продавец' &&
+        {props.column.Header === seller &&
           (
             <ul
               className={`matched-products-dropdown-menu__list ${dropdownMenuIsOpen && 'matched-products-dropdown-menu__list_open'}`}
               onClick={handleSelectDealer}>
-              <li className='matched-products-dropdown-menu__item'>Все</li>
-              {props.matchedProducts.map((obj, index) => {
+              <li className='matched-products-dropdown-menu__item'>{all}</li>
+              {props.dealers.map((obj, index) => {
                 return (
-                  <li key={index} className='matched-products-dropdown-menu__item'>{obj.dealer_name}</li>
+                  <li key={index} className='matched-products-dropdown-menu__item'>{obj.name}</li>
                 )
               })}
             </ul>

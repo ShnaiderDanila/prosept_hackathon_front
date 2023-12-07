@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
+
 import useOutsideClick from '../../hooks/useOutsideClick';
 
 import './DropdownMenu.css';
 
 function DropdownMenu() {
 
-  const dropdownMenuRef = useRef(null);
-
   const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
+
+  const dropdownMenuRef = useRef(null);
 
   function handleOpenSelectMenu() {
     setDropdownMenuIsOpen(!dropdownMenuIsOpen)

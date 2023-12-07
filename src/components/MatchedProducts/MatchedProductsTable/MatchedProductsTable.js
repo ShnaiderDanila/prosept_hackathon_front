@@ -4,6 +4,15 @@ import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
 
 import './MatchedProductsTable.css';
 
+import {
+  dealerProductName,
+  manufacturerProductName,
+  dealerArticle,
+  manufaturerArticle,
+  seller,
+  deleteMatched,
+} from '../../../utils/constants';
+
 import MatchedProductsPagination from '../MatchedProductsPagination/MatchedProductsPagination';
 import MatchedProductsDeleteButton from '../MatchedProductsDeleteButton/MatchedProductsDeleteButton'
 import MatchedProductsFilter from '../MatchedProductsFilter/MatchedProductsFilter';
@@ -12,11 +21,11 @@ import Preloader from '../../Preloader/Preloader';
 
 const COLUMNS = [
   {
-    Header: 'Продавец',
+    Header: seller,
     accessor: 'dealer_name',
   },
   {
-    Header: 'Наименование товара дилера',
+    Header: dealerProductName,
     accessor: 'dealer_price_name',
     Cell: ({ row }) =>
       <a
@@ -27,25 +36,25 @@ const COLUMNS = [
       </a>
   },
   {
-    Header: 'Артикул товара дилера',
+    Header: dealerArticle,
     accessor: 'key_id',
   },
   {
-    Header: 'Наименование товара производителя',
+    Header: manufacturerProductName,
     accessor: "product_name",
   },
   {
-    Header: 'Артикул товара производителя',
+    Header: manufaturerArticle,
     accessor: 'product_article',
   },
   {
-    Header: 'Удалить связь',
+    Header: deleteMatched,
     Cell: (props) =>
       <MatchedProductsDeleteButton />
   }
 ]
 
-function GeneralAnalyticsTable({ matchedProducts, isLoadingMatchedProducts }) {
+function GeneralAnalyticsTable({ matchedProducts, isLoadingMatchedProducts, dealers }) {
 
   const defaultColumn = useMemo(() => {
     return {
@@ -97,7 +106,7 @@ function GeneralAnalyticsTable({ matchedProducts, isLoadingMatchedProducts }) {
                           </p>
                         </div>
                         <div>
-                          {column.canFilter ? column.render('Filter', {matchedProducts: matchedProducts}) : null}
+                          {column.canFilter ? column.render('Filter', {matchedProducts: matchedProducts, dealers: dealers}) : null}
                         </div>
                       </div>
                     </th>

@@ -3,6 +3,16 @@ import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from 
 
 import './DealerProductTable.css';
 
+import {
+  nameOfProduct,
+  recordingDate,
+  seller,
+  selectProduct,
+  article,
+  price,
+  status,
+} from '../../../utils/constants';
+
 import DealerGlobalFilter from '../DealerGlobalFilter/DealerGlobalFilter';
 import DealerColumnFilter from '../DealerColumnFilter/DealerColumnFilter';
 import DealerPagination from '../DealerPagination/DealerPagination';
@@ -10,7 +20,7 @@ import DealerRadioButton from '../DealerRadioButton/DealerRadioButton';
 
 const COLUMNS = [
   {
-    Header: 'Выберите товар',
+    Header: selectProduct,
     disableFilters: true,
     Cell: (props) => {
       return (
@@ -24,13 +34,13 @@ const COLUMNS = [
     disableSortBy: true,
   },
   {
-    Header: 'Артикул',
+    Header: article,
     accessor: 'product_key',
     enableHiding: false,
     disableFilters: true,
   },
   {
-    Header: 'Наименование товара',
+    Header: nameOfProduct,
     accessor: 'product_name',
     Cell: ({ row }) =>
       <a
@@ -41,20 +51,20 @@ const COLUMNS = [
       </a>
   },
   {
-    Header: 'Цена',
+    Header: price,
     accessor: 'price',
     disableFilters: true,
   },
   {
-    Header: 'Продавец',
+    Header: seller,
     accessor: 'dealer_name',
   },
   {
-    Header: "Дата записи",
+    Header: recordingDate,
     accessor: 'date',
   },
   {
-    Header: "Статус",
+    Header: status,
     accessor: 'status',
     disableFilters: true,
   },

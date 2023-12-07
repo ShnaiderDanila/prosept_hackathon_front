@@ -22,7 +22,6 @@ export default function Main(props) {
         getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
         isLoadingDealerProducts={props.isLoadingDealerProducts}
         dealers={props.dealers}
-
       />
     </main>
   )

@@ -3,6 +3,16 @@ import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
+import {
+  yes,
+  no,
+  postponed,
+  matchingPostponed,
+  matched,
+  notMacthed,
+  somethingWentWrong,
+} from '../../utils/constants';
+
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import Header from '../Header/Header';
@@ -13,13 +23,13 @@ import MatchedProducts from '../MatchedProducts/MatchedProducts';
 import { mainApi } from '../../utils/MainApi';
 
 function App() {
+
   const [pendingDealersProducts, setPendingDealersProducts] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
   const [productKey, setProductKey] = useState('');
   const [dealers, setDealers] = useState([]);
   const [popup, setPopup] = useState('');
   const [error, setError] = useState('');
-
   const [isLoadingDealerProducts, setIsLoadingDealerProducts] = useState(false);
   const [isLoadingRecomendations, setIsLoadingRecomendations] = useState(false);
 
@@ -32,16 +42,17 @@ function App() {
 
   function handleComparePosition(productId) {
     setIsLoadingDealerProducts(true);
-    Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, "Да")])
+    Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, yes)])
       .then(() => {
         setRecommendation([]);
+        setPendingDealersProducts([]);
         getPendingDealersProducts();
-        showPopupMsg(setPopup, "Связь успешно установлена")
+        showPopupMsg(setPopup, matched)
       })
       .catch((err) => {
         console.error(err)
         setRecommendation([]);
-        showPopupMsg(setError, "Что-то пошло не так...")
+        showPopupMsg(setError, somethingWentWrong)
       })
       .finally(() => {
         setIsLoadingDealerProducts(false)
@@ -50,16 +61,16 @@ function App() {
 
   function handleNotComparePosition() {
     setIsLoadingDealerProducts(true);
-    mainApi.updatePosition(productKey, "Нет")
+    mainApi.updatePosition(productKey, no)
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
-        showPopupMsg(setPopup, "Связей не установлено")
+        showPopupMsg(setPopup, notMacthed)
       })
       .catch((err) => {
         console.error(err)
         setRecommendation([]);
-        showPopupMsg(setError, "Что-то пошло не так...")
+        showPopupMsg(setError, somethingWentWrong)
       })
       .finally(() => {
         setIsLoadingDealerProducts(false)
@@ -68,16 +79,16 @@ function App() {
 
   function handlePostponePosition() {
     setIsLoadingDealerProducts(true);
-    mainApi.updatePosition(productKey, "Отложено")
+    mainApi.updatePosition(productKey, postponed)
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
-        showPopupMsg(setPopup, "Сопостовление отложено")
+        showPopupMsg(setPopup, matchingPostponed)
       })
       .catch((err) => {
         console.error(err)
         setRecommendation([]);
-        showPopupMsg(setError, "Что-то пошло не так...")
+        showPopupMsg(setError, somethingWentWrong)
       })
       .finally(() => {
         setIsLoadingDealerProducts(false)
@@ -146,7 +157,7 @@ function App() {
           error={error}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
-        <Route path="/statistics/matches" element={<MatchedProducts />} />
+        <Route path="/statistics/matches" element={<MatchedProducts dealers={dealers}/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

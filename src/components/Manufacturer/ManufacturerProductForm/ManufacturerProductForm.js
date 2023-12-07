@@ -3,11 +3,18 @@ import { useTable, useSortBy, usePagination } from 'react-table';
 
 import './ManufacturerProductForm.css';
 
+import {
+  selectProduct,
+  article,
+  nameOfProduct,
+  price,
+} from '../../../utils/constants';
+
 import ManufacturerRadioButton from '../ManufacturerRadioButton/ManufacturerRadioButton';
 
 const COLUMNS = [
   {
-    Header: 'Выберите товар',
+    Header: selectProduct,
     Cell: (props) => {
       return (
         <ManufacturerRadioButton
@@ -21,15 +28,15 @@ const COLUMNS = [
     disableSortBy: true,
   },
   {
-    Header: 'Артикул',
+    Header: article,
     accessor: 'article',
   },
   {
-    Header: 'Наименование товара',
+    Header: nameOfProduct,
     accessor: 'name',
   },
   {
-    Header: 'Цена',
+    Header: price,
     accessor: 'cost',
   },
 ]
@@ -37,7 +44,6 @@ const COLUMNS = [
 function ManufacturerProductForm(props) {
 
   const [value, setValue] = useState(null);
-
   const [radioButtonIsSelected, setRadioButtonIsSelected] = useState(null);
 
   useEffect(() => {
@@ -109,7 +115,11 @@ function ManufacturerProductForm(props) {
                 {
                   row.cells.map((cell) => {
                     return <td className='manufacturer-table__cell' {...cell.getCellProps()}>
-                      {cell.render('Cell', { getRadioValue: getRadioValue, setRadioButtonIsSelected: setRadioButtonIsSelected, radioButtonIsSelected: radioButtonIsSelected })}
+                      {cell.render('Cell', {
+                        getRadioValue: getRadioValue,
+                        setRadioButtonIsSelected: setRadioButtonIsSelected,
+                        radioButtonIsSelected: radioButtonIsSelected
+                      })}
                     </td>
                   })
                 }
@@ -142,9 +152,8 @@ function ManufacturerProductForm(props) {
           </div>
         )
       }
-      <h3 className='manufacturer-table__popup-msg'>{props.popup && `${props.popup}`}</h3>
-      <h3 className='manufacturer-table__popup-msg error-msg'>{props.error && `${props.error}`}</h3>
-
+      <p className='manufacturer-table__popup-msg'>{props.popup && `${props.popup}`}</p>
+      <p className='manufacturer-table__popup-msg error-msg'>{props.error && `${props.error}`}</p>
     </form>
   )
 };

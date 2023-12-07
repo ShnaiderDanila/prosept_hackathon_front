@@ -3,13 +3,23 @@ import useOutsideClick from '../../../hooks/useOutsideClick';
 
 import './GeneralAnalyticsFilter.css';
 
+import {
+  all,
+  yes,
+  no,
+  notСonsidered,
+  postponed,
+  nameOfProduct,
+  recordingDate,
+  seller,
+  status,
+} from '../../../utils/constants';
+
 function GeneralAnalyticsFilter(props) {
 
-  const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
-
-  const dropdownMenuRef = useRef(null);
-
   const { filterValue, setFilter } = props.column;
+  const [dropdownMenuIsOpen, setDropdownMenuIsOpen] = useState(false);
+  const dropdownMenuRef = useRef(null);
 
   function handleOpenDropdownMenu(e) {
     setDropdownMenuIsOpen(!dropdownMenuIsOpen)
@@ -25,7 +35,7 @@ function GeneralAnalyticsFilter(props) {
       setFilter(e.target.textContent)
       props.setSelectedDealer(e.target.textContent)
     }
-    if (e.target.textContent === 'Все') {
+    if (e.target.textContent === all) {
       setFilter(null)
       props.setSelectedDealer(null)
     }
@@ -36,14 +46,14 @@ function GeneralAnalyticsFilter(props) {
       setDropdownMenuIsOpen(!dropdownMenuIsOpen)
       setFilter(e.target.textContent)
     }
-    if (e.target.textContent === 'Все') {
+    if (e.target.textContent === all) {
       setFilter(null)
     }
   }
 
   useOutsideClick(dropdownMenuRef, handleCloseDropdownMenu, dropdownMenuIsOpen)
 
-  if (props.column.Header === 'Наименование товара' || props.column.Header === 'Дата записи') {
+  if (props.column.Header === nameOfProduct || props.column.Header === recordingDate) {
     return (
       <form className='general-analytics-filter-form' >
         <input
@@ -58,28 +68,28 @@ function GeneralAnalyticsFilter(props) {
     return (
       <div className='general-analytics-dropdown-menu'>
         <div ref={dropdownMenuRef} className='general-analytics-dropdown-menu__select' onClick={handleOpenDropdownMenu}>
-          <span className='general-analytics-dropdown-menu__selected'>{filterValue ? filterValue : 'Все'} </span>
+          <span className='general-analytics-dropdown-menu__selected'>{filterValue ? filterValue : all} </span>
           <div className={`general-analytics-dropdown-menu__caret`}></div>
         </div>
-        {props.column.Header === 'Статус сопоставления' &&
+        {props.column.Header === status &&
           (
             <ul
               className={`general-analytics-dropdown-menu__list ${dropdownMenuIsOpen && 'general-analytics-dropdown-menu__list_open'}`}
               onClick={handleSelectStatus}>
-              <li className='general-analytics-dropdown-menu__item'>Все</li>
-              <li className='general-analytics-dropdown-menu__item'>Да</li>
-              <li className='general-analytics-dropdown-menu__item'>Нет</li>
-              <li className='general-analytics-dropdown-menu__item'>Не рассмотрен</li>
-              <li className='general-analytics-dropdown-menu__item'>Отложено</li>
+              <li className='general-analytics-dropdown-menu__item'>{all}</li>
+              <li className='general-analytics-dropdown-menu__item'>{yes}</li>
+              <li className='general-analytics-dropdown-menu__item'>{no}</li>
+              <li className='general-analytics-dropdown-menu__item'>{notСonsidered}</li>
+              <li className='general-analytics-dropdown-menu__item'>{postponed}</li>
             </ul>
           )
         }
-        {props.column.Header === 'Продавец' &&
+        {props.column.Header === seller &&
           (
             <ul
               className={`general-analytics-dropdown-menu__list ${dropdownMenuIsOpen && 'general-analytics-dropdown-menu__list_open'}`}
               onClick={handleSelectDealer}>
-              <li className='general-analytics-dropdown-menu__item'>Все</li>
+              <li className='general-analytics-dropdown-menu__item'>{all}</li>
               {props.dealers.map((obj, index) => {
                 return (
                   <li key={index} className='general-analytics-dropdown-menu__item'>{obj.name}</li>
