@@ -16,51 +16,87 @@ function App() {
   const [recommendation, setRecommendation] = useState([]);
   const [productKey, setProductKey] = useState('');
 
+  const [isLoadingDealerProducts, setIsLoadingDealerProducts] = useState(false);
+  const [isLoadingRecomendations, setIsLoadingRecomendations] = useState(false);
+
   function handleComparePosition(productId) {
+    setIsLoadingDealerProducts(true);
     Promise.all([mainApi.comparePosition(productKey, productId), mainApi.updatePosition(productKey, "Да")])
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoadingDealerProducts(false)
+      });
 
   }
 
   function handleNotComparePosition() {
+    setIsLoadingDealerProducts(true);
     mainApi.updatePosition(productKey, "Нет")
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoadingDealerProducts(false)
+      });
   }
 
   function handlePostponePosition() {
+    setIsLoadingDealerProducts(true);
     mainApi.updatePosition(productKey, "Отложить")
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoadingDealerProducts(false)
+      });
   }
 
   function getRecomendationToDealerProduct(value) {
+    setIsLoadingRecomendations(true);
     setProductKey(value)
     mainApi.getRecomendation(value)
       .then((recommendation) => {
         setRecommendation(recommendation);
-        console.log(recommendation);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoadingRecomendations(false);
+      });
   }
 
   function getPendingDealersProducts() {
+    setIsLoadingDealerProducts(true);
     mainApi.getPendingDealersProducts()
       .then((pendingDealersProducts) => {
-        setPendingDealersProducts(pendingDealersProducts);
-        console.log(pendingDealersProducts);
+        mainApi.getAllDealers()
+          .then((arr) => {
+            // const newArr = arr.sort((a, b) => a.name.localeCompare(b.name));
+            // setDealers(newArr);
+            for (let i = 0; i < pendingDealersProducts.length; i++) {
+              const dealerId = pendingDealersProducts[i].dealer_id;
+              const dealer = arr.find(dealer => dealer.id === dealerId);
+              if (dealer) {
+                pendingDealersProducts[i].dealer_name = dealer.name;
+              }
+            }
+            return pendingDealersProducts
+          })
+          .then((pendingDealersProducts) => {
+            setPendingDealersProducts(pendingDealersProducts);
+          })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setIsLoadingDealerProducts(false)
+      });
   }
 
   useEffect(() => {
@@ -78,6 +114,8 @@ function App() {
           pendingDealersProducts={pendingDealersProducts}
           recommendation={recommendation}
           getRecomendationToDealerProduct={getRecomendationToDealerProduct}
+          isLoadingDealerProducts={isLoadingDealerProducts}
+          isLoadingRecomendations={isLoadingRecomendations}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
         <Route path="*" element={<NotFound />} />
