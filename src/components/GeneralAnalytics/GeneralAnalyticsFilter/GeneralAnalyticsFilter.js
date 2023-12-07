@@ -70,7 +70,7 @@ function GeneralAnalyticsFilter(props) {
               <li className='general-analytics-dropdown-menu__item'>Да</li>
               <li className='general-analytics-dropdown-menu__item'>Нет</li>
               <li className='general-analytics-dropdown-menu__item'>Не рассмотрен</li>
-              <li className='general-analytics-dropdown-menu__item'>Отложить</li>
+              <li className='general-analytics-dropdown-menu__item'>Отложено</li>
             </ul>
           )
         }
