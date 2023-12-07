@@ -25,9 +25,11 @@ const COLUMNS = [
     Cell: (props) => {
       return (
         <DealerRadioButton
+          rowStatus={props.row.values.status}
           rowId={props.row.values.product_key}
           getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
           pendingDealersProducts={props.pendingDealersProducts}
+          setIsPostponed={props.setIsPostponed}
         />
       )
     },
@@ -144,6 +146,7 @@ function DealerProductTable(props) {
                         {
                           getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
                           pendingDealersProducts: props.pendingDealersProducts,
+                          setIsPostponed: props.setIsPostponed
                         })}
                     </td>
                   })

@@ -30,6 +30,7 @@ function App() {
   const [dealers, setDealers] = useState([]);
   const [popup, setPopup] = useState('');
   const [error, setError] = useState('');
+  const [isPostponed, setIsPostponed] = useState('');
   const [isLoadingDealerProducts, setIsLoadingDealerProducts] = useState(false);
   const [isLoadingRecomendations, setIsLoadingRecomendations] = useState(false);
 
@@ -161,6 +162,8 @@ function App() {
           pendingDealersProducts={pendingDealersProducts}
           recommendation={recommendation}
           getRecomendationToDealerProduct={getRecomendationToDealerProduct}
+          setIsPostponed={setIsPostponed}
+          isPostponed={isPostponed}
           isLoadingDealerProducts={isLoadingDealerProducts}
           isLoadingRecomendations={isLoadingRecomendations}
           popup={popup}

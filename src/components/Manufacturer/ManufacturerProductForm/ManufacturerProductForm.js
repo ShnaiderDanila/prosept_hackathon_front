@@ -152,9 +152,10 @@ function ManufacturerProductForm(props) {
               Нет
             </button>
             <button
-              className='manufacturer-button manufacturer-button_enabled'
+              className={`manufacturer-button ${props.isPostponed === 'Отложено' ? 'manufacturer-button_disabled' : 'manufacturer-button_enabled'}`}
               type='button'
-              onClick={handlePostponePosition}>
+              onClick={handlePostponePosition}
+              disabled={props.isPostponed === 'Отложено'}>
               Отложить
             </button>
           </div>

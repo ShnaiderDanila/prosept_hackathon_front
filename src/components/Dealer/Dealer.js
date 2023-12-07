@@ -15,6 +15,7 @@ function Dealer(props) {
           pendingDealersProducts={props.pendingDealersProducts}
           getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
           dealers={props.dealers}
+          setIsPostponed={props.setIsPostponed}
         />}
     </section>
   )

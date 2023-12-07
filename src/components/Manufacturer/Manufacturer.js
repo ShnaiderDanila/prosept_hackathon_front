@@ -19,6 +19,7 @@ function Manufacturer(props) {
           recommendation={props.recommendation}
           popup={props.popup}
           error={props.error}
+          isPostponed={props.isPostponed}
         />}
     </section>
   )
