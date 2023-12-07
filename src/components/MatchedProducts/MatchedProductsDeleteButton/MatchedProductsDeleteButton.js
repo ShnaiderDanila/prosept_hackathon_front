@@ -2,10 +2,25 @@ import React from 'react';
 
 import './MatchedProductsDeleteButton.css';
 
-function MatchedProductsDeleteButton() {
+import { mainApi } from '../../../utils/MainApi';
+
+import { notСonsidered } from '../../../utils/constants.js';
+
+function MatchedProductsDeleteButton(props) {
 
   function handleDelete() {
-    console.log(123)
+    props.setIsLoadingMatchedProducts(true);
+    Promise.all([mainApi.deleteMatchedProducts(props.keyId), mainApi.updatePosition(props.keyId, notСonsidered)])
+      .then(() => {
+        mainApi.getMatchedProducts()
+          .then((matchedProducts) => {
+            props.setMatchedProducts(matchedProducts);
+          })
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        props.setIsLoadingMatchedProducts(false);
+      })
   }
 
   return (
