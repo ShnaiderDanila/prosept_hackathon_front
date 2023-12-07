@@ -13,7 +13,10 @@ export default function GeneralAnalytics() {
   const [dealers, setDealers] = useState([]);
   const [selectedDealer, setSelectedDealer] = useState(null)
 
+  const [isLoadingGeneralAnalytics, setIsLoadingGeneralAnalytics] = useState(false);
+
   useEffect(() => {
+    setIsLoadingGeneralAnalytics(true);
     mainApi.getAllDealersProducts()
       .then((data) => {
         mainApi.getAllDealers()
@@ -30,16 +33,26 @@ export default function GeneralAnalytics() {
             return data
           })
           .then((dealersProducts) => {
-            setDealersProducts(dealersProducts);
+            setDealersProducts(dealersProducts)
           })
+          .finally(() => {
+            setIsLoadingGeneralAnalytics(false)
+          });
       })
   }, []);
 
   return (
     <section className='general-analytics'>
       <div className='general-analytics__container'>
-        <GeneralAnalyticsDiagram dealersProducts={dealersProducts} selectedDealer={selectedDealer} />
-        <GeneralAnalyticsTable dealers={dealers} dealersProducts={dealersProducts} setSelectedDealer={setSelectedDealer} />
+        <GeneralAnalyticsDiagram
+          dealersProducts={dealersProducts}
+          selectedDealer={selectedDealer}
+          isLoadingGeneralAnalytics={isLoadingGeneralAnalytics} />
+        <GeneralAnalyticsTable
+          dealers={dealers}
+          dealersProducts={dealersProducts}
+          setSelectedDealer={setSelectedDealer}
+          isLoadingGeneralAnalytics={isLoadingGeneralAnalytics} />
       </div>
     </section>
   )

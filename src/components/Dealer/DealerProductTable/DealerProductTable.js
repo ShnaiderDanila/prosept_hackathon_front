@@ -14,11 +14,13 @@ const COLUMNS = [
     disableFilters: true,
     Cell: (props) => {
       return (
-      <DealerRadioButton
-      rowId={props.row.values.product_key}
-      getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
-      />
-    )},
+        <DealerRadioButton
+          rowId={props.row.values.product_key}
+          getRecomendationToDealerProduct={props.getRecomendationToDealerProduct}
+          pendingDealersProducts={props.pendingDealersProducts}
+        />
+      )
+    },
     disableSortBy: true,
   },
   {
@@ -41,10 +43,20 @@ const COLUMNS = [
   {
     Header: 'Цена',
     accessor: 'price',
+    disableFilters: true,
+  },
+  {
+    Header: 'Продавец',
+    accessor: 'dealer_name',
   },
   {
     Header: "Дата записи",
     accessor: 'date',
+  },
+  {
+    Header: "Статус",
+    accessor: 'status',
+    disableFilters: true,
   },
 ]
 
@@ -99,7 +111,7 @@ function DealerProductTable(props) {
                       </p>
                     </div>
                     <div>
-                      {column.canFilter ? column.render('Filter') : null}
+                      {column.canFilter ? column.render('Filter', {dealers: props.dealers}) : null}
                     </div>
                   </div>
                 </th>
@@ -114,7 +126,13 @@ function DealerProductTable(props) {
               <tr {...row.getRowProps()}>
                 {
                   row.cells.map((cell) => {
-                    return <td className='dealer-table__cell' {...cell.getCellProps()}>{cell.render('Cell', {getRecomendationToDealerProduct:props.getRecomendationToDealerProduct})}</td>
+                    return <td className='dealer-table__cell'
+                      {...cell.getCellProps()}>
+                      {cell.render('Cell',
+                        { getRecomendationToDealerProduct: props.getRecomendationToDealerProduct,
+                          pendingDealersProducts: props.pendingDealersProducts,
+                        })}
+                    </td>
                   })
                 }
               </tr>
