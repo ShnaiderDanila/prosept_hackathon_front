@@ -16,7 +16,9 @@ function Manufacturer(props) {
           onComparePosition={props.onComparePosition}
           onNotComparePosition={props.onNotComparePosition}
           onPostonePosition={props.onPostonePosition}
-          recommendation={props.recommendation} />}
+          recommendation={props.recommendation}
+          popup={props.popup}
+          />}
     </section>
   )
 };
