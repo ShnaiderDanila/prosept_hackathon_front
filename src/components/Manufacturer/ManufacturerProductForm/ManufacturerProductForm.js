@@ -143,6 +143,7 @@ function ManufacturerProductForm(props) {
         )
       }
       <h3 className='manufacturer-table__popup-msg'>{props.popup && `${props.popup}`}</h3>
+      <h3 className='manufacturer-table__popup-msg error-msg'>{props.error && `${props.error}`}</h3>
 
     </form>
   )

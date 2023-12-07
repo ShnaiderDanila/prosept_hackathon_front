@@ -15,6 +15,7 @@ export default function Main(props) {
         recommendation={props.recommendation}
         isLoadingRecomendations={props.isLoadingRecomendations}
         popup={props.popup}
+        error={props.error}
       />
       <Dealer
         pendingDealersProducts={props.pendingDealersProducts}
