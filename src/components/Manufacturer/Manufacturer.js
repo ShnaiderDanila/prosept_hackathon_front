@@ -18,6 +18,7 @@ function Manufacturer(props) {
           onPostonePosition={props.onPostonePosition}
           recommendation={props.recommendation}
           popup={props.popup}
+          error={props.error}
           />}
     </section>
   )

@@ -108,6 +108,10 @@ table tr:hover {
   text-align: center;
 }
 
+.error-msg {
+  color: #222;
+}
+
 
 @media screen and (max-width: 1500px) {
   .manufacturer-table__header-cell {

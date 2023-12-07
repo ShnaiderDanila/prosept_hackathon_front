@@ -22,12 +22,11 @@ function App() {
   const [isLoadingDealerProducts, setIsLoadingDealerProducts] = useState(false);
   const [isLoadingRecomendations, setIsLoadingRecomendations] = useState(false);
 
-  function showPopupMsg(msg) {
-    setPopup(msg)
+  function showPopupMsg(setter, msg) {
+    setter(msg)
     setTimeout(() => {
-      setPopup('');
+      setter('');
     }, 2000);
-
   }
 
   function handleComparePosition(productId) {
@@ -36,9 +35,13 @@ function App() {
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
-        showPopupMsg("Связь успешно установлена")
+        showPopupMsg(setPopup, "Связь успешно установлена")
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.error(err)
+        setRecommendation([]);
+        showPopupMsg(setError, "Что-то пошло не так...")
+      })
       .finally(() => {
         setIsLoadingDealerProducts(false)
       });
@@ -50,8 +53,13 @@ function App() {
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
+        showPopupMsg(setPopup, "Связей не установлено")
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.error(err)
+        setRecommendation([]);
+        showPopupMsg(setError, "Что-то пошло не так...")
+      })
       .finally(() => {
         setIsLoadingDealerProducts(false)
       });
@@ -63,8 +71,13 @@ function App() {
       .then(() => {
         setRecommendation([]);
         getPendingDealersProducts();
+        showPopupMsg(setPopup, "Сопостовление отложено")
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.error(err)
+        setRecommendation([]);
+        showPopupMsg(setError, "Что-то пошло не так...")
+      })
       .finally(() => {
         setIsLoadingDealerProducts(false)
       });
@@ -77,7 +90,7 @@ function App() {
       .then((recommendation) => {
         setRecommendation(recommendation);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
       .finally(() => {
         setIsLoadingRecomendations(false);
       });
@@ -104,7 +117,7 @@ function App() {
             setPendingDealersProducts(pendingDealersProducts);
           })
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
       .finally(() => {
         setIsLoadingDealerProducts(false)
       });
@@ -129,6 +142,7 @@ function App() {
           isLoadingRecomendations={isLoadingRecomendations}
           popup={popup}
           dealers={dealers}
+          error={error}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
         <Route path="*" element={<NotFound />} />
