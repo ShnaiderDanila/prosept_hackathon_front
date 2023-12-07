@@ -8,6 +8,7 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 import NotFound from '../NotFound/NotFound';
 import GeneralAnalytics from '../GeneralAnalytics/GeneralAnalytics';
+import MatchedProducts from '../MatchedProducts/MatchedProducts';
 
 import { mainApi } from '../../utils/MainApi';
 
@@ -145,6 +146,7 @@ function App() {
           error={error}
         />} />
         <Route path="/statistics/dealers" element={<GeneralAnalytics />} />
+        <Route path="/statistics/matches" element={<MatchedProducts />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
