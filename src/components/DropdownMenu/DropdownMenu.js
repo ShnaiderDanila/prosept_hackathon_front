@@ -27,13 +27,16 @@ function DropdownMenu() {
         <div className={`dropdown-menu__icon ${dropdownMenuIsOpen ? 'dropdown-menu__close-icon' : 'dropdown-menu__open-icon'}`}></div>
       </div>
       <ul className={`dropdown-menu__list ${dropdownMenuIsOpen && 'dropdown-menu__list_open'}`}>
-      <li className='dropdown-menu__item'>
+        <li className='dropdown-menu__item'>
+          <Link to='/' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
+            Главная страница
+          </Link>
           <Link to='/statistics/dealers' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
             Отчеты и аналитика
           </Link>
         </li>
         <li className='dropdown-menu__item'>
-          <Link to='/' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
+          <Link to='/statistics/matches' className='dropdown-menu__link' onClick={handleOpenSelectMenu}>
             Сопоставленные позиции
           </Link>
         </li>
