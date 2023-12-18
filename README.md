@@ -28,11 +28,13 @@ Data Science:
 - [Milana Gakaeva](https://t.me/m_gakaeva)
 - [Renata Piatkova](https://t.me/renata_piatkova)
 
-## Ссылки на проект
+## Ссылка на проект
 
-- http://prosept.sytes.net/
+http://prosept.sytes.net/
 
-- https://github.com/kotbegemot1/prosept_hackathon_front
+## Ссылка на проект на Github
+
+https://github.com/kotbegemot1/prosept_hackathon_front
 
 ## Билд и запуск проекта
 
