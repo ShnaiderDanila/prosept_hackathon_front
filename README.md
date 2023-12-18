@@ -12,22 +12,6 @@
 - Собрали приложение и развернул его на сервере.
 - Провели демо.
   
-## Команда
-Frontend:
-- [Evgeniy Koltyapin](https://github.com/kotbegemot1)
-- [Danila Shnayder](https://github.com/Shnd3r)
-  
-Backend:
-- [Evgeniy Golodnykh](https://github.com/Evgeniy-Golodnykh)
-
-Backend Unit Testing:
-- [Alexandra Nikitenko](https://github.com/Aleksandri-A)
-
-Data Science:
-- [Aleksandr Glazunov](https://github.com/pzae)
-- [Milana Gakaeva](https://t.me/m_gakaeva)
-- [Renata Piatkova](https://t.me/renata_piatkova)
-
 ## Ссылка на проект
 
 http://prosept.sytes.net/
@@ -49,6 +33,22 @@ https://github.com/kotbegemot1/prosept_hackathon_front
 ## Стек технологий
 
 HTML5, CSS3, Javascript, React, React-table, Apexcharts.js, React router, Git, CRA, Docker
+
+## Команда
+Frontend:
+- [Evgeniy Koltyapin](https://github.com/kotbegemot1)
+- [Danila Shnayder](https://github.com/Shnd3r)
+  
+Backend:
+- [Evgeniy Golodnykh](https://github.com/Evgeniy-Golodnykh)
+
+Backend Unit Testing:
+- [Alexandra Nikitenko](https://github.com/Aleksandri-A)
+
+Data Science:
+- [Aleksandr Glazunov](https://github.com/pzae)
+- [Milana Gakaeva](https://t.me/m_gakaeva)
+- [Renata Piatkova](https://t.me/renata_piatkova)
 
 ## Дополнительные ссылки
 
