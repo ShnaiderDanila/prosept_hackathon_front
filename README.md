@@ -50,7 +50,7 @@ https://github.com/kotbegemot1/prosept_hackathon_front
 
 HTML5, CSS3, Javascript, React, React-table, Apexcharts.js, React router, Git, CRA, Docker
 
-## Ссылки на фреймворки, библиотеки, иконки и шрифты
+## Дополнительные ссылки
 
 CRA - https://create-react-app.dev/
 
