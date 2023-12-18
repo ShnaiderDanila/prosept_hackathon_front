@@ -32,7 +32,7 @@ Data Science:
 
 http://prosept.sytes.net/
 
-## Ссылка на проект на Github
+## Ссылка на проект в Github
 
 https://github.com/kotbegemot1/prosept_hackathon_front
 
