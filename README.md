@@ -37,7 +37,7 @@ HTML5, CSS3, Javascript, React, React-table, Apexcharts.js, React router, Git, C
 ## Команда
 Frontend:
 - [Evgeniy Koltyapin](https://github.com/kotbegemot1)
-- [Danila Shnayder](https://github.com/Shnd3r)
+- [Danila Shnayder](https://github.com/ShnaiderDanila)
   
 Backend:
 - [Evgeniy Golodnykh](https://github.com/Evgeniy-Golodnykh)
